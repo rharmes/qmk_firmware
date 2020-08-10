@@ -6,19 +6,33 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _QWERTY 0
+<<<<<<< HEAD
 #define _ARROWS 1
 #define _NAV 2
 #define _RECT 3
+=======
+#define _LOWER 1
+#define _RAISE 2
+>>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
 
 // Layers and mods
 #define SPC_GUI LGUI_T(KC_SPC)            // ⌘ when held, Sapce when tapped
 #define ENT_GUI RGUI_T(KC_ENT)            // ⌘ when held, Enter when tapped
+<<<<<<< HEAD
 #define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
 #define NAV_J LT(_NAV, KC_J)              // Momentarily activate layer 2 when held, and J when tapped
 #define RECT MO(_RECT)                    // Momentarily activate layer 3
 
 // Shortcuts
 #define LOCK LCTL(LGUI(KC_Q))             // ⌘^Q: Lock screen
+=======
+#define LWR_ESC LT(_LOWER, KC_ESC)        // Momentarily activate layer 1 when held, and Escape when tapped
+#define RSE MO(_RAISE)                    // Momentarily activate layer 2
+
+// Shortcuts
+#define LOCK LCTL(LGUI(KC_Q))             // ⌘^Q: Lock screen
+#define UNDO LGUI(KC_Z)                   // ⌘Z: Undo
+>>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
 #define CUT LGUI(KC_X)                    // ⌘X: Cut
 #define COPY LGUI(KC_C)                   // ⌘C: Copy
 #define PASTE LGUI(KC_V)                  // ⌘C: Paste
@@ -27,7 +41,10 @@
 #define LN_SRT RCTL(KC_A)                 // ^A: Move to the beginning of the line or paragraph
 #define LN_END RCTL(KC_E)                 // ^E: Move to the end of a line or paragraph
 #define DEL_RT RCTL(KC_D)                 // ^D: Delete the character to the right of the insertion point
+<<<<<<< HEAD
 #define KILL_LN RCTL(KC_K)                // ^K: Kill line
+=======
+>>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
 #define GUI_BL RGUI(KC_LBRC)              // ⌘[: Previous Channel in Slack
 #define GUI_BR RGUI(KC_RBRC)              // ⌘]: Next Channel in Slack
 
@@ -46,22 +63,35 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+<<<<<<< HEAD
 /* QWERTY (yellow underglow)
+=======
+/* QWERTY
+>>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
  * .-----------------------------------------.     .-----------------------------------------.
  * |  `   |   1  |   2  |   3  |   4  |   5  |     |   6  |   7  |   8  |   9  |   0  |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * |  Tab |   Q  |   W  |   E  |   R  |   T  |     |   Y  |   U  |   I  |   O  |   P  |  \   |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+<<<<<<< HEAD
  * |  BS  |   A  |   S  |   D  |  (F) |   G  |     |   H  |  (J) |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|   Z  |   X  |   C  |   V  |   B  |     |   N  |   M  |   ,  |   .  |   /  |Rshft |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lock |      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | RECT |   [  |   ]  |   -  |   =  |
+=======
+ * |  BS  |   A  |   S  |   D  |   F  |   G  |     |   H  |   J  |   K  |   L  |   ;  |  "   |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * | Lshft|   Z  |   X  |   C  |   V  |   B  |     |   N  |   M  |   ,  |   .  |   /  |Rshft |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * | Lock |      | LCtrl| LAlt |  LWR |  Spc |     |  Ent |  RSE |   [  |   ]  |   -  |   =  |
+>>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
  * `-----------------------------------------'     '-----------------------------------------'
  */
 [_QWERTY] = LAYOUT( \
   KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLASH, \
+<<<<<<< HEAD
   KC_BSPC,  KC_A,    KC_S,    KC_D,    ARW_F,   KC_G,    KC_H,    NAV_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
   LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT,    KC_LBRC, KC_RBRC, KC_MINS, KC_EQL \
@@ -112,6 +142,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* RECT (lavender underglow) - Window management shortcuts for Rectangle
  * .-----------------------------------------.     .-----------------------------------------.
  * |      | Hue+ | Sat+ | Val+ | Plain| RGB T|     |      |      |      |      |      |  BS  |
+=======
+  KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+  KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
+  LOCK,     XXXXXXX, KC_LCTL, KC_LALT, LWR_ESC, SPC_GUI, ENT_GUI, RSE,     KC_LBRC, KC_RBRC, KC_MINS, KC_EQL \
+),
+
+/* LOWER - Cursor movement, media keys, and clipboard shortcuts
+ * .-----------------------------------------.     .-----------------------------------------.
+ * |  Esc |   B- |   B+ | Prev | Play | Next |     | Mute | Vol- | Vol+ |   -  |   =  |  BS  |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * |  Tab |      |      | PgUp |      |      |     |      | PvWd |  Up  | NxWd |      | DelR |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * |  BS  |      |      | PgDn |      |      |     | LSrt | Left | Down | Right| LEnd |  "   |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * | Lshft| Undo |  Cut | Copy | Paste|      |     |      |      |      |      |      |Rshft |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * |      |      | LCtrl| LAlt |  LWR |  Spc |     |  Ent |  RSE |GUI-[ |GUI-] |      |Reset |
+ * `-----------------------------------------'     '-----------------------------------------'
+ */
+[_LOWER] = LAYOUT( \
+  KC_ESC,   KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, KC_MINS, KC_EQL,  _______, \
+  _______,  XXXXXXX, XXXXXXX, KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX, DEL_RT, \
+  _______,  XXXXXXX, XXXXXXX, KC_PGDN, XXXXXXX, XXXXXXX, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  _______, \
+  _______,  UNDO,    CUT,     COPY,    PASTE,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
+  XXXXXXX,  XXXXXXX, _______, _______, _______, _______, _______, _______, GUI_BL,  GUI_BR,  XXXXXXX, RESET \
+),
+
+/* RAISE - Window management shortcuts for Rectangle and media keys
+ * .-----------------------------------------.     .-----------------------------------------.
+ * |  Esc |   B- |   B+ | Prev | Play | Next |     | Mute | Vol- | Vol+ |   -  |   =  |  BS  |
+>>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * |  Tab |      | UpLf | UpHf | UpRt |      |     |      |      |      |      |      |      |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -119,6 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|      | LwLf | LwHf | LwRt |      |     |      |      |      |      |      |Rshft |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+<<<<<<< HEAD
  * | Reset|      | LCtrl| LAlt |  Esc |  Spc |     |  Ent |(Held)|      |      |      |      |
  * `-----------------------------------------'     '-----------------------------------------'
  */
@@ -126,10 +188,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX,  RGB_HUI, RGB_SAI, RGB_VAI, RGB_M_P, RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
   _______,  XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   _______,  PRV_DIS, LF_HALF, FULLSCR, RT_HALF, NXT_DIS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+=======
+ * | Reset|      | LCtrl| LAlt |  LWR |  Spc |     |  Ent |  RSE |      |      |      |      |
+ * `-----------------------------------------'     '-----------------------------------------'
+ */
+[_RAISE] = LAYOUT( \
+  KC_ESC,   KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, KC_MINS, KC_EQL,  _______, \
+  _______,  XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  _______,  PRV_DIS, LW_HALF, FULLSCR, RT_HALF, NXT_DIS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+>>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
   _______,  XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
   RESET,    XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 )
 
+<<<<<<< HEAD
 };
 
 // Lighting layers
@@ -167,3 +239,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(_RECT, layer_state_cmp(state, _RECT));
     return state;
 }
+=======
+};
+>>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
