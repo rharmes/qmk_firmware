@@ -7,6 +7,7 @@
 // entirely and just use numbers.
 #define _QWERTY 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define _ARROWS 1
 #define _NAV 2
 #define _RECT 3
@@ -14,10 +15,16 @@
 #define _LOWER 1
 #define _RAISE 2
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
+=======
+#define _ARROWS 1
+#define _NAV 2
+#define _RECT 3
+>>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
 
 // Layers and mods
 #define SPC_GUI LGUI_T(KC_SPC)            // ⌘ when held, Sapce when tapped
 #define ENT_GUI RGUI_T(KC_ENT)            // ⌘ when held, Enter when tapped
+<<<<<<< HEAD
 <<<<<<< HEAD
 #define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
 #define NAV_J LT(_NAV, KC_J)              // Momentarily activate layer 2 when held, and J when tapped
@@ -33,6 +40,14 @@
 #define LOCK LCTL(LGUI(KC_Q))             // ⌘^Q: Lock screen
 #define UNDO LGUI(KC_Z)                   // ⌘Z: Undo
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
+=======
+#define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
+#define NAV_J LT(_NAV, KC_J)              // Momentarily activate layer 2 when held, and J when tapped
+#define RECT MO(_RECT)                    // Momentarily activate layer 3
+
+// Shortcuts
+#define LOCK LCTL(LGUI(KC_Q))             // ⌘^Q: Lock screen
+>>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
 #define CUT LGUI(KC_X)                    // ⌘X: Cut
 #define COPY LGUI(KC_C)                   // ⌘C: Copy
 #define PASTE LGUI(KC_V)                  // ⌘C: Paste
@@ -74,6 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |  Tab |   Q  |   W  |   E  |   R  |   T  |     |   Y  |   U  |   I  |   O  |   P  |  \   |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
 <<<<<<< HEAD
+<<<<<<< HEAD
  * |  BS  |   A  |   S  |   D  |  (F) |   G  |     |   H  |  (J) |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|   Z  |   X  |   C  |   V  |   B  |     |   N  |   M  |   ,  |   .  |   /  |Rshft |
@@ -86,11 +102,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lock |      | LCtrl| LAlt |  LWR |  Spc |     |  Ent |  RSE |   [  |   ]  |   -  |   =  |
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
+=======
+ * |  BS  |   A  |   S  |   D  |  (F) |   G  |     |   H  |  (J) |   K  |   L  |   ;  |  "   |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * | Lshft|   Z  |   X  |   C  |   V  |   B  |     |   N  |   M  |   ,  |   .  |   /  |Rshft |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * | Lock |      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | RECT |   [  |   ]  |   -  |   =  |
+>>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
  * `-----------------------------------------'     '-----------------------------------------'
  */
 [_QWERTY] = LAYOUT( \
   KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLASH, \
+<<<<<<< HEAD
 <<<<<<< HEAD
   KC_BSPC,  KC_A,    KC_S,    KC_D,    ARW_F,   KC_G,    KC_H,    NAV_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
@@ -144,35 +168,63 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      | Hue+ | Sat+ | Val+ | Plain| RGB T|     |      |      |      |      |      |  BS  |
 =======
   KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+=======
+  KC_BSPC,  KC_A,    KC_S,    KC_D,    ARW_F,   KC_G,    KC_H,    NAV_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+>>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
-  LOCK,     XXXXXXX, KC_LCTL, KC_LALT, LWR_ESC, SPC_GUI, ENT_GUI, RSE,     KC_LBRC, KC_RBRC, KC_MINS, KC_EQL \
+  LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT,    KC_LBRC, KC_RBRC, KC_MINS, KC_EQL \
 ),
 
-/* LOWER - Cursor movement, media keys, and clipboard shortcuts
+/* ARROWS - Cursor movement, media keys, and clipboard shortcuts
  * .-----------------------------------------.     .-----------------------------------------.
- * |  Esc |   B- |   B+ | Prev | Play | Next |     | Mute | Vol- | Vol+ |   -  |   =  |  BS  |
+ * |      |      |      |      |      |      |     | Mute | Vol- | Vol+ |   -  |   =  |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
- * |  Tab |      |      | PgUp |      |      |     |      | PvWd |  Up  | NxWd |      | DelR |
+ * |  Tab |      |      |      |      |      |     |      | PvWd |  Up  | NxWd |      | DelR |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
- * |  BS  |      |      | PgDn |      |      |     | LSrt | Left | Down | Right| LEnd |  "   |
+ * |  BS  |      |      |      |(Held)|      |     | LSrt | Left | Down | Right| LEnd |  "   |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
- * | Lshft| Undo |  Cut | Copy | Paste|      |     |      |      |      |      |      |Rshft |
+ * | Lshft|      |      |      |      |      |     |   =  |  Cut | Copy | Paste|      |Rshft |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
- * |      |      | LCtrl| LAlt |  LWR |  Spc |     |  Ent |  RSE |GUI-[ |GUI-] |      |Reset |
+ * |      |      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | RECT |GUI-[ |GUI-] |      |Reset |
  * `-----------------------------------------'     '-----------------------------------------'
  */
-[_LOWER] = LAYOUT( \
-  KC_ESC,   KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, KC_MINS, KC_EQL,  _______, \
-  _______,  XXXXXXX, XXXXXXX, KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX, DEL_RT, \
-  _______,  XXXXXXX, XXXXXXX, KC_PGDN, XXXXXXX, XXXXXXX, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  _______, \
-  _______,  UNDO,    CUT,     COPY,    PASTE,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
+[_ARROWS] = LAYOUT( \
+  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, KC_MINS, KC_EQL,  _______, \
+  _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX, DEL_RT, \
+  _______,  XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  _______, \
+  _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_EQL,  CUT,     COPY,    PASTE,   XXXXXXX, _______, \
   XXXXXXX,  XXXXXXX, _______, _______, _______, _______, _______, _______, GUI_BL,  GUI_BR,  XXXXXXX, RESET \
 ),
 
-/* RAISE - Window management shortcuts for Rectangle and media keys
+/* NAV - Navigation shortcuts and media keys
  * .-----------------------------------------.     .-----------------------------------------.
+<<<<<<< HEAD
  * |  Esc |   B- |   B+ | Prev | Play | Next |     | Mute | Vol- | Vol+ |   -  |   =  |  BS  |
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
+=======
+ * |  Esc |   B- |   B+ | Prev | Play | Next |     |      |      |      |      |      |  BS  |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * |  Tab |      |      | WhDn |      | PgUp |     |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * |  BS  |      | WhRt | WhUp | WhLf | PgDn |     |      |(Held)|      |      |      |      |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * | Lshft|      |      |      |      |   -  |     |      |      |      |      |      |Rshft |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * | Reset|      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | RECT |      |      |      |      |
+ * `-----------------------------------------'     '-----------------------------------------'
+ */
+[_NAV] = LAYOUT( \
+  KC_ESC,   KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
+  _______,  XXXXXXX, XXXXXXX, KC_WH_D, XXXXXXX, KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  _______,  XXXXXXX, KC_WH_R, KC_WH_U, KC_WH_L, KC_PGDN, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MINS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
+  RESET,    XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
+),
+
+/* RECT - Window management shortcuts for Rectangle
+ * .-----------------------------------------.     .-----------------------------------------.
+ * |      |      |      |      |      |      |     |      |      |      |      |      |  BS  |
+>>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * |  Tab |      | UpLf | UpHf | UpRt |      |     |      |      |      |      |      |      |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -180,6 +232,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|      | LwLf | LwHf | LwRt |      |     |      |      |      |      |      |Rshft |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+<<<<<<< HEAD
 <<<<<<< HEAD
  * | Reset|      | LCtrl| LAlt |  Esc |  Spc |     |  Ent |(Held)|      |      |      |      |
  * `-----------------------------------------'     '-----------------------------------------'
@@ -190,10 +243,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  PRV_DIS, LF_HALF, FULLSCR, RT_HALF, NXT_DIS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
 =======
  * | Reset|      | LCtrl| LAlt |  LWR |  Spc |     |  Ent |  RSE |      |      |      |      |
+=======
+ * | Reset|      | LCtrl| LAlt |  Esc |  Spc |     |  Ent |(Held)|      |      |      |      |
+>>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
  * `-----------------------------------------'     '-----------------------------------------'
  */
-[_RAISE] = LAYOUT( \
-  KC_ESC,   KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU, KC_MINS, KC_EQL,  _______, \
+[_RECT] = LAYOUT( \
+  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
   _______,  XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   _______,  PRV_DIS, LW_HALF, FULLSCR, RT_HALF, NXT_DIS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
