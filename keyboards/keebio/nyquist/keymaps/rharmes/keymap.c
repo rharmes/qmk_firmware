@@ -27,6 +27,7 @@
 #define LN_SRT RCTL(KC_A)                 // ^A: Move to the beginning of the line or paragraph
 #define LN_END RCTL(KC_E)                 // ^E: Move to the end of a line or paragraph
 #define DEL_RT RCTL(KC_D)                 // ^D: Delete the character to the right of the insertion point
+#define KILL_LN RCTL(KC_K)                // ^K: Kill line
 #define GUI_BL RGUI(KC_LBRC)              // ⌘[: Previous Channel in Slack
 #define GUI_BR RGUI(KC_RBRC)              // ⌘]: Next Channel in Slack
 
@@ -72,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * |  Tab |      |      |      |      |      |     |      | PvWd |  Up  | NxWd |      | DelR |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
- * |  BS  |      |      |      |(Held)|      |     | LSrt | Left | Down | Right| LEnd |  "   |
+ * |  BS  |      |      |      |(Held)|      |     | LSrt | Left | Down | Right| LEnd | Kill |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|      |      |      |      |      |     |   =  |  Cut | Copy | Paste|      |Rshft |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -82,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ARROWS] = LAYOUT( \
   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, KC_MINS, KC_EQL,  _______, \
   _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX, DEL_RT, \
-  _______,  XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  _______, \
+  _______,  XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  KILL_LN, \
   _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_EQL,  CUT,     COPY,    PASTE,   XXXXXXX, _______, \
   XXXXXXX,  XXXXXXX, _______, _______, _______, _______, _______, _______, GUI_BL,  GUI_BR,  RGB_TOG, RESET \
 ),
@@ -91,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * .-----------------------------------------.     .-----------------------------------------.
  * |  Esc |   B- |   B+ | Prev | Play | Next |     |      |      |      |      |      |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
- * |  Tab |      |      | WhDn |      | PgUp |     |      |      |      |      |      |      |
+ * |  Tab |      | Home | WhDn | End  | PgUp |     |      |      |      |      |      |      |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * |  BS  |      | WhRt | WhUp | WhLf | PgDn |     |      |(Held)|      |      |      |      |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -102,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_NAV] = LAYOUT( \
   KC_ESC,   KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-  _______,  XXXXXXX, XXXXXXX, KC_WH_D, XXXXXXX, KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  _______,  XXXXXXX, KC_HOME, KC_WH_D, KC_END,  KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   _______,  XXXXXXX, KC_WH_R, KC_WH_U, KC_WH_L, KC_PGDN, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MINS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
   RESET,    XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
