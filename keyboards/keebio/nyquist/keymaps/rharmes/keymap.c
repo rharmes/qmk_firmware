@@ -285,6 +285,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Lighting layers
 const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 <<<<<<< HEAD
+<<<<<<< HEAD
     {0, 12, 33, 255, 255} // #ffc700: 47, 100, 100
 );
 const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -297,16 +298,23 @@ const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 12, 168, 120, 255} // #878eff: 237, 47, 100
 =======
     {0, 12, HSV_GOLD}
+=======
+    {0, 12, 33, 255, 255} // #ffc700: 47, 100, 100
+>>>>>>> Tweak the colors for the lighting layers.
 );
 const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 12, HSV_CYAN}
+    {0, 12, 140, 255, 232} // #00a3e9: 198, 100, 91
 );
 const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 12, HSV_CORAL}
+    {0, 12, 0, 184, 237} // #ee4343: 0, 72, 93
 );
 const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+<<<<<<< HEAD
     {0, 12, HSV_PURPLE}
 >>>>>>> Added support for lighting layers.
+=======
+    {0, 12, 168, 120, 255} // #878eff: 237, 47, 100
+>>>>>>> Tweak the colors for the lighting layers.
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
