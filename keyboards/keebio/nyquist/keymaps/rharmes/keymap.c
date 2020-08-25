@@ -83,10 +83,14 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* QWERTY (yellow underglow)
 =======
 /* QWERTY
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
+=======
+/* QWERTY (yellow underglow)
+>>>>>>> Added support for lighting layers.
  * .-----------------------------------------.     .-----------------------------------------.
  * |  `   |   1  |   2  |   3  |   4  |   5  |     |   6  |   7  |   8  |   9  |   0  |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -179,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT,    KC_LBRC, KC_RBRC, KC_MINS, KC_EQL \
 ),
 
-/* ARROWS - Cursor movement, media keys, and clipboard shortcuts
+/* ARROWS (blue underglow) - Cursor movement, media keys, and clipboard shortcuts
  * .-----------------------------------------.     .-----------------------------------------.
  * |      |      |      |      |      |      |     | Mute | Vol- | Vol+ |   -  |   =  |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -200,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX,  XXXXXXX, _______, _______, _______, _______, _______, _______, GUI_BL,  GUI_BR,  RGB_TOG, RESET \
 ),
 
-/* NAV - Navigation shortcuts and media keys
+/* NAV (red underglow) - Navigation shortcuts and media keys
  * .-----------------------------------------.     .-----------------------------------------.
 <<<<<<< HEAD
  * |  Esc |   B- |   B+ | Prev | Play | Next |     | Mute | Vol- | Vol+ |   -  |   =  |  BS  |
@@ -225,7 +229,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   RESET,    XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 ),
 
-/* RECT - Window management shortcuts for Rectangle
+/* RECT (lavender underglow) - Window management shortcuts for Rectangle
  * .-----------------------------------------.     .-----------------------------------------.
 <<<<<<< HEAD
  * |      |      |      |      |      |      |     |      |      |      |      |      |  BS  |
@@ -273,10 +277,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Added support for lighting layers.
 };
 
 // Lighting layers
 const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+<<<<<<< HEAD
     {0, 12, 33, 255, 255} // #ffc700: 47, 100, 100
 );
 const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -287,6 +295,18 @@ const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 12, 168, 120, 255} // #878eff: 237, 47, 100
+=======
+    {0, 12, HSV_GOLD}
+);
+const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_CYAN}
+);
+const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_CORAL}
+);
+const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_PURPLE}
+>>>>>>> Added support for lighting layers.
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
@@ -310,6 +330,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(_RECT, layer_state_cmp(state, _RECT));
     return state;
 }
+<<<<<<< HEAD
 =======
 };
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
+=======
+>>>>>>> Added support for lighting layers.
