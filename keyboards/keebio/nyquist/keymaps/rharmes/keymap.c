@@ -46,7 +46,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* QWERTY
+/* QWERTY (yellow underglow)
  * .-----------------------------------------.     .-----------------------------------------.
  * |  `   |   1  |   2  |   3  |   4  |   5  |     |   6  |   7  |   8  |   9  |   0  |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT,    KC_LBRC, KC_RBRC, KC_MINS, KC_EQL \
 ),
 
-/* ARROWS - Cursor movement, media keys, and clipboard shortcuts
+/* ARROWS (blue underglow) - Cursor movement, media keys, and clipboard shortcuts
  * .-----------------------------------------.     .-----------------------------------------.
  * |      |      |      |      |      |      |     | Mute | Vol- | Vol+ |   -  |   =  |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX,  XXXXXXX, _______, _______, _______, _______, _______, _______, GUI_BL,  GUI_BR,  RGB_TOG, RESET \
 ),
 
-/* NAV - Navigation shortcuts and media keys
+/* NAV (red underglow) - Navigation shortcuts and media keys
  * .-----------------------------------------.     .-----------------------------------------.
  * |  Esc |   B- |   B+ | Prev | Play | Next |     |      |      |      |      |      |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   RESET,    XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 ),
 
-/* RECT - Window management shortcuts for Rectangle
+/* RECT (lavender underglow) - Window management shortcuts for Rectangle
  * .-----------------------------------------.     .-----------------------------------------.
  * |      | Hue+ | Sat+ | Val+ | Plain| RGB T|     |      |      |      |      |      |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -131,3 +131,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 
 };
+
+// Lighting layers
+const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_GOLD}
+);
+const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_CYAN}
+);
+const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_CORAL}
+);
+const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 12, HSV_PURPLE}
+);
+
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    qwerty_layer,
+    arrow_layer,
+    nav_layer,
+    rect_layer
+);
+
+void keyboard_post_init_user(void) {
+    // Enable the LED layers
+    rgblight_layers = my_rgb_layers;
+    rgblight_set_layer_state(_QWERTY, 1);
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    // Both layers will light up if both kb layers are active
+    rgblight_set_layer_state(_QWERTY, layer_state_cmp(state, _QWERTY));
+    rgblight_set_layer_state(_ARROWS, layer_state_cmp(state, _ARROWS));
+    rgblight_set_layer_state(_NAV, layer_state_cmp(state, _NAV));
+    rgblight_set_layer_state(_RECT, layer_state_cmp(state, _RECT));
+    return state;
+}
