@@ -28,7 +28,7 @@
 #define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
 #define ARW_TOG TG(_ARROWS)               // Toggles layer 1 on and off
 #define NAV_J LT(_NAV, KC_J)              // Momentarily activate layer 2 when held, and J when tapped
-#define RECT MO(_RECT)                    // Momentarily activate layer 3
+#define RECT_BS LT(_RECT, KC_BSPC)        // Momentarily activate layer 3 when held, and backspace when tapped
 
 // Shortcuts
 #define MIC_TOG LSFT(LGUI(KC_A))          // ⇧⌘A: Mute or un-mute the mic in Zoom
@@ -97,8 +97,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------+------+------+------+------+------|   -  |    | SelR |  | Left | Down | Right| PvSh |    |  =   |------+------+------+------+------+--------.
  * |  Shift |   Z  |   X  |   C  |   V  |   B  |------'    |------|  |------+------+------+------|    `------|   N  |   M  |   ,  |   .  |   /  | Shift  |
  * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
- *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | MO(3)|   ⌥  |   ^  |
- *                 `--------------------' |   ⌘  |      |  | MO(3)|  | Paste Values|PstSty|      |  |      |   ⌘  | `--------------------'
+ *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | BS(3)|   ⌥  |   ^  |
+ *                 `--------------------' |   ⌘  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |   ⌘  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
  *                                        `------|      | ,----------------. ,-------. ,----------. |      |------'
  *                                               |      | |   Mic Toggle   | | ScrLk | |Cam Toggle| |      | 
@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LBRC,          INS_R_C,          ROW_SRT, KC_UP,   ROW_END, NXT_SHT,          KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS, \
   KC_BSPC, KC_A,    KC_S,    KC_D,    ARW_F,   KC_G,    KC_MINS,          SEL_ROW,          KC_LEFT, KC_DOWN, KC_RGHT, PRV_SHT,          KC_EQL,  KC_H,    NAV_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      SEL_COL,          CUT,     COPY,    PASTE,   KC_PENT,                   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
-                    KC_LCTL, KC_LALT, KC_ESC,                             RECT,             PST_VAL,          PST_STY,                                     RECT,   KC_RALT, KC_LCTL,                    \
+                    KC_LCTL, KC_LALT, KC_ESC,                             RECT_BS,          PST_VAL,          PST_STY,                                     RECT_BS, KC_RALT, KC_LCTL,                    \
                                                KC_LGUI, KC_SPC,           MIC_TOG,          LOCK,             CAM_TOG,                   KC_ENT,  KC_RGUI                                               \
 ),
 
@@ -126,8 +126,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------+------+------+------+------+------|   -  |    | SelR |  |   4  |   5  |   6  |   +  |    |  =   |------+------+------+------+------+--------.
  * |  Shift |      |      |      |      |      |------'    |------|  |------+------+------+------|    `------|   =  |  Cut | Copy | Paste|      | Shift  |
  * `--------+------+------+------+------+------'           | SelC |  |   1  |   2  |   3  |      |           `------+------+------+------+------+--------'
- *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | MO(3)|   ⌥  |   ^  |
- *                 `--------------------' |   ⌘  |      |  | MO(3)|  |      0      |   .  |      |  |      |   ⌘  | `--------------------'
+ *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | BS(3)|   ⌥  |   ^  |
+ *                 `--------------------' |   ⌘  |      |  | BS(3)|  |      0      |   .  |      |  |      |   ⌘  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
  *                                        `------|      | ,----------------. ,-------. ,----------. |      |------'
  *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
@@ -155,8 +155,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------+------+------+------+------+------|   -  |    | SelR |  | Left | Down | Right| PvSh |    |  =   |------+------+------+------+------+--------.
  * |  Shift |      |      |      |      |   -  |------'    |------|  |------+------+------+------|    `------|      |      |      |      |      | Shift  |
  * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
- *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | MO(3)|   ⌥  |   ^  |
- *                 `--------------------' |   ⌘  |      |  | MO(3)|  | Paste Values|PstSty|      |  |      |   ⌘  | `--------------------'
+ *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | BS(3)|   ⌥  |   ^  |
+ *                 `--------------------' |   ⌘  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |   ⌘  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
  *                                        `------|      | ,----------------. ,-------. ,----------. |      |------'
  *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
