@@ -57,7 +57,7 @@
 =======
 #define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
 #define NAV_J LT(_NAV, KC_J)              // Momentarily activate layer 2 when held, and J when tapped
-#define RECT MO(_RECT)                    // Momentarily activate layer 3
+#define RECT_BS LT(_RECT, KC_BSPC)        // Momentarily activate layer 3 when held, and backspace when tapped
 
 // Shortcuts
 #define LOCK LCTL(LGUI(KC_Q))             // ⌘^Q: Lock screen
@@ -112,6 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  * |  BS  |   A  |   S  |   D  |  (F) |   G  |     |   H  |  (J) |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|   Z  |   X  |   C  |   V  |   B  |     |   N  |   M  |   ,  |   .  |   /  |Rshft |
@@ -131,6 +132,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lock |      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | RECT |   [  |   ]  |   -  |   =  |
 >>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
+=======
+ * |  BS  |   A  |   S  |   D  | F(1) |   G  |     |   H  | J(2) |   K  |   L  |   ;  |  "   |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * | Lshft|   Z  |   X  |   C  |   V  |   B  |     |   N  |   M  |   ,  |   .  |   /  |Rshft |
+ * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+ * | Lock |      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | BS(3)|   [  |   ]  |   -  |   =  |
+>>>>>>> Added a third backspace, on the layer 3 mod.
  * `-----------------------------------------'     '-----------------------------------------'
  */
 <<<<<<< HEAD
@@ -148,8 +156,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLASH,
   KC_BSPC,  KC_A,    KC_S,    KC_D,    ARW_F,   KC_G,    KC_H,    NAV_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+<<<<<<< HEAD
   LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT,    KC_LBRC, KC_RBRC, KC_MINS, KC_EQL
 >>>>>>> Remove unnecessary trailing backslashes in the LAYOUT blocks,
+=======
+  LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT_BS, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL
+>>>>>>> Added a third backspace, on the layer 3 mod.
 ),
 
 /* ARROWS (blue underglow) - Cursor movement, media keys, and clipboard shortcuts
@@ -162,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|      |      |      |      |      |     |   =  |  Cut | Copy | Paste|      |Rshft |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
- * |      |      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | RECT |GUI-[ |GUI-] | RGB T|Reset |
+ * |      |      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | BS(3)|GUI-[ |GUI-] | RGB T|Reset |
  * `-----------------------------------------'     '-----------------------------------------'
  */
 [_ARROWS] = LAYOUT(
@@ -183,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|      |      |      |      |   -  |     |      |      |      |      |      |Rshft |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
- * | Reset|      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | RECT |      |      |      |      |
+ * | Reset|      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | BS(3)|      |      |      |      |
  * `-----------------------------------------'     '-----------------------------------------'
  */
 [_NAV] = LAYOUT(
