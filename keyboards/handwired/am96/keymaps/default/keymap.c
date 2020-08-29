@@ -104,14 +104,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                               |      | |   Mic Toggle   | | ScrLk | |Cam Toggle| |      | 
  *                                               `------' `----------------' `-------' `----------' `------'
  */
-[_QWERTY] = LAYOUT( \
-                                                                 KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                                                                \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      DEL_R_C,          ARW_TOG, SHT_TOP, SHT_BOT, FILE_M,                    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS, \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LBRC,          INS_R_C,          ROW_SRT, KC_UP,   ROW_END, NXT_SHT,          KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOT, \
-  KC_BSPC, KC_A,    KC_S,    KC_D,    ARW_F,   KC_G,    KC_MINS,          SEL_ROW,          KC_LEFT, KC_DOWN, KC_RGHT, PRV_SHT,          KC_EQL,  KC_H,    NAV_J,   KC_K,    KC_L,    KC_SCLN, KC_BSPC, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      SEL_COL,          CUT,     COPY,    PASTE,   KC_PENT,                   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
-                    KC_LCTL, KC_LALT, KC_ESC,                             RECT_BS,          PST_VAL,          PST_STY,                                     RECT_BS, KC_RALT, KC_LCTL,                    \
-                                               KC_LGUI, KC_SPC,           MIC_TOG,          LOCK,             CAM_TOG,                   KC_ENT,  KC_RGUI                                               \
+[_QWERTY] = LAYOUT(
+                                                                 KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                                                               
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      DEL_R_C,          ARW_TOG, SHT_TOP, SHT_BOT, FILE_M,                    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
+  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LBRC,          INS_R_C,          ROW_SRT, KC_UP,   ROW_END, NXT_SHT,          KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOT,
+  KC_BSPC, KC_A,    KC_S,    KC_D,    ARW_F,   KC_G,    KC_MINS,          SEL_ROW,          KC_LEFT, KC_DOWN, KC_RGHT, PRV_SHT,          KC_EQL,  KC_H,    NAV_J,   KC_K,    KC_L,    KC_SCLN, KC_BSPC,
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      SEL_COL,          CUT,     COPY,    PASTE,   KC_PENT,                   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+                    KC_LCTL, KC_LALT, KC_ESC,                             RECT_BS,          PST_VAL,          PST_STY,                                     RECT_BS, KC_RALT, KC_LCTL,                  
+                                               KC_LGUI, KC_SPC,           MIC_TOG,          LOCK,             CAM_TOG,                   KC_ENT,  KC_RGUI                                              
 ),
 
 /* Keymap 1: Arrows layer (blue underglow) - Cursor movement, media keys, numpad, and clipboard shortcuts   
@@ -126,21 +126,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------+------+------+------+------+------|   -  |    | SelR |  |   4  |   5  |   6  |   +  |    |  =   |------+------+------+------+------+--------.
  * |  Shift |      |      |      |      |      |------'    |------|  |------+------+------+------|    `------|   =  |  Cut | Copy | Paste|      | Shift  |
  * `--------+------+------+------+------+------'           | SelC |  |   1  |   2  |   3  |      |           `------+------+------+------+------+--------'
- *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | BS(3)|   ⌥  |   ^  |
+ *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | BS(3)|  ⌘[  |  ⌘]  |
  *                 `--------------------' |   ⌘  |      |  | BS(3)|  |      0      |   .  |      |  |      |   ⌘  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
  *                                        `------|      | ,----------------. ,-------. ,----------. |      |------'
  *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
  *                                               `------' `----------------' `-------' `----------' `------'
  */
-[_ARROWS] = LAYOUT( \
-                                                                 _______, _______, _______, _______, _______, _______, _______, _______,                                                                \
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          _______, KC_PSLS, KC_PAST, KC_PEQL,                   KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX, KILL_LN, \
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,          KC_P7,   KC_P8,   KC_P9,   KC_PMNS,          _______, XXXXXXX, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX, DEL_RT,  \
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, _______,          _______,          KC_P4,   KC_P5,   KC_P6,   KC_PPLS,          _______, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  _______, \
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          KC_P1,   KC_P2,   KC_P3,   KC_PENT,                   KC_EQL,  CUT,     COPY,    PASTE,   XXXXXXX, _______, \
-                    _______, _______, _______,                            _______,          KC_P0,            KC_PDOT,                                     _______, _______, _______,                   \
-                                               _______, _______,          _______,          RESET,            _______,                   _______, _______                                               \
+[_ARROWS] = LAYOUT(
+                                                                 _______, _______, _______, _______, _______, _______, _______, _______,                                                               
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          _______, KC_PSLS, KC_PAST, KC_PEQL,                   KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX, KILL_LN,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,          KC_P7,   KC_P8,   KC_P9,   KC_PMNS,          _______, XXXXXXX, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX, DEL_RT, 
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, _______,          _______,          KC_P4,   KC_P5,   KC_P6,   KC_PPLS,          _______, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  _______,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          KC_P1,   KC_P2,   KC_P3,   KC_PENT,                   KC_EQL,  CUT,     COPY,    PASTE,   XXXXXXX, _______,
+                    _______, _______, _______,                            _______,          KC_P0,            KC_PDOT,                                     _______, GUI_BL,  GUI_BR,                   
+                                               _______, _______,          _______,          RESET,            _______,                   _______, _______                                              
 ),
 
 /* Keymap 2: Nav layer (red underglow) - Navigation shortcuts and media keys   
@@ -162,14 +162,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
  *                                               `------' `----------------' `-------' `----------' `------'
  */
-[_NAV] = LAYOUT( \
-                                                                 _______, _______, _______, _______, _______, _______, _______, _______,                                                                \
-  _______, KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-  _______, XXXXXXX, KC_HOME, KC_WH_D, KC_END,  KC_PGUP, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-  _______, XXXXXXX, KC_WH_R, KC_WH_U, KC_WH_L, KC_PGDN, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MINS,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-                    _______, _______, _______,                            _______,          _______,          _______,                                     _______, _______, _______,                   \
-                                               _______, _______,          _______,          RESET,            _______,                   _______, _______                                               \
+[_NAV] = LAYOUT(
+                                                                 _______, _______, _______, _______, _______, _______, _______, _______,                                                               
+  _______, KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  _______, XXXXXXX, KC_HOME, KC_WH_D, KC_END,  KC_PGUP, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  _______, XXXXXXX, KC_WH_R, KC_WH_U, KC_WH_L, KC_PGDN, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MINS,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+                    _______, _______, _______,                            _______,          _______,          _______,                                     _______, _______, _______,                  
+                                               _______, _______,          _______,          RESET,            _______,                   _______, _______                                              
 ),
 
 /* Keymap 3: Rectangle layer (lavender underglow) - Window management shortcuts for Rectangle and formating shortcuts for GSheet
@@ -191,14 +191,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
  *                                               `------' `----------------' `-------' `----------' `------'
  */
-[_RECT] = LAYOUT( \
-                                                                 _______, _______, _______, _______, _______, _______, _______, _______,                                                                \
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-  _______, XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, XXXXXXX, _______,          _______,          BRD_OUT, BRD_TOP, REM_BRD, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-  _______, PRV_DIS, LF_HALF, FULLSCR, RT_HALF, NXT_DIS, _______,          _______,          BRD_LFT, BRD_BOT, BRD_RGT, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-  _______, XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, XXXXXXX,                   _______,          ALN_LFT, ALN_CEN, ALN_RGT, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
-                    _______, _______, _______,                            _______,          _______,          _______,                                     _______, _______, _______,                   \
-                                               _______, _______,          _______,          RESET,            _______,                   _______, _______                                               \
+[_RECT] = LAYOUT(
+                                                                 _______, _______, _______, _______, _______, _______, _______, _______,                                                               
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  _______, XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, XXXXXXX, _______,          _______,          BRD_OUT, BRD_TOP, REM_BRD, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  _______, PRV_DIS, LF_HALF, FULLSCR, RT_HALF, NXT_DIS, _______,          _______,          BRD_LFT, BRD_BOT, BRD_RGT, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  _______, XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, XXXXXXX,                   _______,          ALN_LFT, ALN_CEN, ALN_RGT, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+                    _______, _______, _______,                            _______,          _______,          _______,                                     _______, _______, _______,                  
+                                               _______, _______,          _______,          RESET,            _______,                   _______, _______                                              
 )
 
 };
