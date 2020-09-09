@@ -17,18 +17,29 @@
 
 // Layout: http://www.keyboard-layout-editor.com/#/gists/aaa64d553c73dd6a8e15c7e91637d76c
 // Finger assignments: http://www.keyboard-layout-editor.com/#/gists/26b92acc628d7178145297d07cd5025a
-// Keycaps kits needed: http://www.keyboard-layout-editor.com/#/gists/9b53ad90d167b41d41cdeffb204ed60e (yellow: base, pink: extras, green: colemak, blue: spacebars)
 
 #define _QWERTY 0
 #define _ARROWS 1
 #define _NAV 2
 #define _RECT 3
+#define _GAMING 4
 
-// Layers and mods
+// Layers
 #define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
 #define ARW_TOG TG(_ARROWS)               // Toggles layer 1 on and off
 #define NAV_J LT(_NAV, KC_J)              // Momentarily activate layer 2 when held, and J when tapped
-#define RECT_BS LT(_RECT, KC_BSPC)        // Momentarily activate layer 3 when held, and backspace when tapped
+#define RECT_H LT(_RECT, KC_BSPC)         // Momentarily activate layer 3 when held, and H when tapped
+#define GAM_TOG TG(_GAMING)               // Toggles layer 4 on and off
+
+// Mod-Taps
+#define CMD_SPC LGUI_T(KC_SPC)            // ⌘ when held, Sapce when tapped
+#define CMD_ENT RGUI_T(KC_ENT)            // ⌘ when held, Enter when tapped
+#define SHIFT_D LSFT_T(KC_D)              // ⇧ when held, D when tapped
+#define SHIFT_K RSFT_T(KC_K)              // ⇧ when held, K when tapped
+#define ALT_S LALT_T(KC_S)                // ⌥ when held, S when tapped
+#define ALT_L RALT_T(KC_L)                // ⌥ when held, L when tapped
+#define CTL_A LCTL_T(KC_A)                // ^ when held, A when tapped
+#define CTL_CLN RCTL_T(KC_SCLN)           // ^ when held, ; when tapped
 
 // Shortcuts
 #define MIC_TOG LSFT(LGUI(KC_A))          // ⇧⌘A: Mute or un-mute the mic in Zoom
@@ -37,8 +48,9 @@
 #define CUT LGUI(KC_X)                    // ⌘X: Cut
 #define COPY LGUI(KC_C)                   // ⌘C: Copy
 #define PASTE LGUI(KC_V)                  // ⌘V: Paste
-#define PRV_WD RALT(RSFT(KC_LEFT))        // ⇧⌥←: Select to the beginning of the previous word
-#define NXT_WD RALT(RSFT(KC_RGHT))        // ⇧⌥→: Select to the end of the next word
+#define UNDO LGUI(KC_Z)                   // ⌘Z: Undo
+#define PRV_WD RALT(KC_LEFT)              // ⌥←: Move to the beginning of the previous word
+#define NXT_WD RALT(KC_RGHT)              // ⌥→: Move to the end of the next word
 #define LN_SRT RCTL(KC_A)                 // ^A: Move to the beginning of the line or paragraph
 #define LN_END RCTL(KC_E)                 // ^E: Move to the end of a line or paragraph
 #define DEL_RT RCTL(KC_D)                 // ^D: Delete the character to the right of the insertion point
@@ -93,25 +105,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *  ,--+----+------+------+------+------+------|           | DelR |  | TG(1)| ShTop|ShBotm| File |           |------+------+------+------+------+-----+-.
  *  |  Tab  |   Q  |   W  |   E  |   R  |   T  |------.    |------|  |------+------+------+------|    ,------|   Y  |   U  |   I  |   O  |   P  |   '   |
  *  |-------+------+------+------+------+------|   [  |    | InsR |  | RSrt |  Up  | REnd | NxSh |    |  ]   |------+------+------+------+------+-------|
- *  |   BS  |   A  |   S  |   D  | F(1) |   G  |------|    |------|  |------+------+------+------|    |------|   H  | J(2) |   K  |   L  |   ;  |  BS   |
+ *  |   BS  | A(^) | S(⌥) | D(⇧) | F(1) |   G  |------|    |------|  |------+------+------+------|    |------| H(3) | J(2) | K(⇧) | L(⌥) | ;(^) |  BS   |
  * ,--------+------+------+------+------+------|   -  |    | SelR |  | Left | Down | Right| PvSh |    |  =   |------+------+------+------+------+--------.
- * |  Shift |   Z  |   X  |   C  |   V  |   B  |------'    |------|  |------+------+------+------|    `------|   N  |   M  |   ,  |   .  |   /  | Shift  |
+ * |    ⇧   |   Z  |   X  |   C  |   V  |   B  |------'    |------|  |------+------+------+------|    `------|   N  |   M  |   ,  |   .  |   /  |   ⇧    |
  * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
- *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | BS(3)|   ⌥  |   ^  |
- *                 `--------------------' |   ⌘  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |   ⌘  | `--------------------'
+ *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
+ *                 `--------------------' |  BS  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
- *                                        `------|      | ,----------------. ,-------. ,----------. |      |------'
- *                                               |      | |   Mic Toggle   | | ScrLk | |Cam Toggle| |      | 
+ *                                        `------|  (⌘) | ,----------------. ,-------. ,----------. |  (⌘) |------'
+ *                                               |      | |   Mic Toggle   | |ScrnLck| |Cam Toggle| |      | 
  *                                               `------' `----------------' `-------' `----------' `------'
  */
 [_QWERTY] = LAYOUT(
                                                                  KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                                                               
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      DEL_R_C,          ARW_TOG, SHT_TOP, SHT_BOT, FILE_M,                    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LBRC,          INS_R_C,          ROW_SRT, KC_UP,   ROW_END, NXT_SHT,          KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOT,
-  KC_BSPC, KC_A,    KC_S,    KC_D,    ARW_F,   KC_G,    KC_MINS,          SEL_ROW,          KC_LEFT, KC_DOWN, KC_RGHT, PRV_SHT,          KC_EQL,  KC_H,    NAV_J,   KC_K,    KC_L,    KC_SCLN, KC_BSPC,
+  KC_BSPC, CTL_A,   ALT_S,   SHIFT_D, ARW_F,   KC_G,    KC_MINS,          SEL_ROW,          KC_LEFT, KC_DOWN, KC_RGHT, PRV_SHT,          KC_EQL,  RECT_H,  NAV_J,   SHIFT_K, ALT_L,   CTL_CLN, KC_BSPC,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      SEL_COL,          CUT,     COPY,    PASTE,   KC_PENT,                   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                    KC_LCTL, KC_LALT, KC_ESC,                             RECT_BS,          PST_VAL,          PST_STY,                                     RECT_BS, KC_RALT, KC_LCTL,                  
-                                               KC_LGUI, KC_SPC,           MIC_TOG,          LOCK,             CAM_TOG,                   KC_ENT,  KC_RGUI                                              
+                    KC_LCTL, KC_LALT, KC_ESC,                             RECT_BS,          PST_VAL,          PST_STY,                                     KC_TAB,  KC_RALT, KC_RCTL,                  
+                                               KC_BSPC, CMD_SPC,          MIC_TOG,          LOCK,             CAM_TOG,                   CMD_ENT, KC_BSPC                                              
 ),
 
 /* Keymap 1: Arrows layer (blue underglow) - Cursor movement, media keys, numpad, and clipboard shortcuts   
@@ -122,14 +134,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *  ,--+----+------+------+------+------+------|           | DelR |  | TG(1)|   ÷  |   ×  |   =  |           |------+------+------+------+------+-----+-.
  *  |  Tab  |      |      |      |      |      |------.    |------|  |------+------+------+------|    ,------|      | PvWd |  Up  | NxWd |      | DelR  |
  *  |-------+------+------+------+------+------|   [  |    | InsR |  |   7  |   8  |   9  |   -  |    |  ]   |------+------+------+------+------+-------|
- *  |   BS  |      |      |      |(held)|      |------|    |------|  |------+------+------+------|    |------| LSrt | Left | Down | Right| LEnd |  BS   |
+ *  |   BS  |   ^  |   ⌥  |   ⇧  |(held)|      |------|    |------|  |------+------+------+------|    |------| LSrt | Left | Down | Right| LEnd |  BS   |
  * ,--------+------+------+------+------+------|   -  |    | SelR |  |   4  |   5  |   6  |   +  |    |  =   |------+------+------+------+------+--------.
- * |  Shift |      |      |      |      |      |------'    |------|  |------+------+------+------|    `------|   =  |  Cut | Copy | Paste|      | Shift  |
+ * |    ⇧   |      |      |      |      |      |------'    |------|  |------+------+------+------|    `------|   =  |  Cut | Copy | Paste| Undo |   ⇧    |
  * `--------+------+------+------+------+------'           | SelC |  |   1  |   2  |   3  |      |           `------+------+------+------+------+--------'
- *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | BS(3)|  ⌘[  |  ⌘]  |
- *                 `--------------------' |   ⌘  |      |  | BS(3)|  |      0      |   .  |      |  |      |   ⌘  | `--------------------'
+ *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |  ⌘[  |  ⌘]  |
+ *                 `--------------------' |  BS  |      |  | BS(3)|  |      0      |   .  |      |  |      |  BS  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
- *                                        `------|      | ,----------------. ,-------. ,----------. |      |------'
+ *                                        `------|  (⌘) | ,----------------. ,-------. ,----------. |  (⌘) |------'
  *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
  *                                               `------' `----------------' `-------' `----------' `------'
  */
@@ -137,8 +149,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                  _______, _______, _______, _______, _______, _______, _______, _______,                                                               
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          _______, KC_PSLS, KC_PAST, KC_PEQL,                   KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX, KILL_LN,
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,          KC_P7,   KC_P8,   KC_P9,   KC_PMNS,          _______, XXXXXXX, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX, DEL_RT, 
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, _______,          _______,          KC_P4,   KC_P5,   KC_P6,   KC_PPLS,          _______, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  _______,
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          KC_P1,   KC_P2,   KC_P3,   KC_PENT,                   KC_EQL,  CUT,     COPY,    PASTE,   XXXXXXX, _______,
+  _______, KC_LCTL, KC_LALT, KC_LSFT, _______, XXXXXXX, _______,          _______,          KC_P4,   KC_P5,   KC_P6,   KC_PPLS,          _______, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  _______,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          KC_P1,   KC_P2,   KC_P3,   KC_PENT,                   KC_EQL,  CUT,     COPY,    PASTE,   UNDO,    _______,
                     _______, _______, _______,                            _______,          KC_P0,            KC_PDOT,                                     _______, GUI_BL,  GUI_BR,                   
                                                _______, _______,          _______,          RESET,            _______,                   _______, _______                                              
 ),
@@ -151,14 +163,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *  ,--+----+------+------+------+------+------|           | DelR |  | TG(1)| ShTop|ShBotm| File |           |------+------+------+------+------+-----+-.
  *  |  Tab  |      | Home | WhDn | End  | PgUp |------.    |------|  |------+------+------+------|    ,------|      |      |      |      |      |   '   |
  *  |-------+------+------+------+------+------|   [  |    | InsR |  | RSrt |  Up  | REnd | NxSh |    |  ]   |------+------+------+------+------+-------|
- *  |   BS  |      | WhRt | WhUp | WhLf | PgDn |------|    |------|  |------+------+------+------|    |------|      |(held)|      |      |      |  BS   |
+ *  |   BS  |      | WhRt | WhUp | WhLf | PgDn |------|    |------|  |------+------+------+------|    |------|      |(held)|   ⇧  |   ⌥  |   ^  |  BS   |
  * ,--------+------+------+------+------+------|   -  |    | SelR |  | Left | Down | Right| PvSh |    |  =   |------+------+------+------+------+--------.
- * |  Shift |      |      |      |      |   -  |------'    |------|  |------+------+------+------|    `------|      |      |      |      |      | Shift  |
+ * |    ⇧   |      |      |      |      |   -  |------'    |------|  |------+------+------+------|    `------|      |      |      |      |      |   ⇧    |
  * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
- *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. | BS(3)|   ⌥  |   ^  |
- *                 `--------------------' |   ⌘  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |   ⌘  | `--------------------'
+ *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
+ *                 `--------------------' |  BS  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
- *                                        `------|      | ,----------------. ,-------. ,----------. |      |------'
+ *                                        `------|  (⌘) | ,----------------. ,-------. ,----------. |  (⌘) |------'
  *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
  *                                               `------' `----------------' `-------' `----------' `------'
  */
@@ -166,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                  _______, _______, _______, _______, _______, _______, _______, _______,                                                               
   _______, KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   _______, XXXXXXX, KC_HOME, KC_WH_D, KC_END,  KC_PGUP, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-  _______, XXXXXXX, KC_WH_R, KC_WH_U, KC_WH_L, KC_PGDN, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  _______, XXXXXXX, KC_WH_R, KC_WH_U, KC_WH_L, KC_PGDN, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, _______, KC_RSFT, KC_RALT, KC_RCTL, _______,
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MINS,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
                     _______, _______, _______,                            _______,          _______,          _______,                                     _______, _______, _______,                  
                                                _______, _______,          _______,          RESET,            _______,                   _______, _______                                              
@@ -177,18 +189,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                              | Bri- | Bri+ | | Prev | Play | Next | | Mute | Vol- | Vol+ |
  *     ,---------------------------------------.`-------------' `--------------------' `--------------------',----------------------------------------.
  *     | `  |      |      |      |      |      |           ,------.  ,---------------------------.           |      |      |      |      |      |   \ |
- *  ,--+----+------+------+------+------+------|           |      |  | TG(1)|      |      |      |           |------+------+------+------+------+-----+-.
+ *  ,--+----+------+------+------+------+------|           | DelR |  | TG(1)|      |      |      |           |------+------+------+------+------+-----+-.
  *  |  Tab  |      | UpLf | UpHf | UpRt |      |------.    |------|  |------+------+------+------|    ,------|      |      |      |      |      |   '   |
- *  |-------+------+------+------+------+------|   [  |    |      |  | BdOut| BdTp | RemBD|      |    |  ]   |------+------+------+------+------+-------|
- *  |   BS  | Disp-| LfHf | Full | RtHf |Disp+ |------|    |------|  |------+------+------+------|    |------|      |      |      |      |      |  BS   |
- * ,--------+------+------+------+------+------|   -  |    |      |  | BdLf | BdBm | BdRt |      |    |  =   |------+------+------+------+------+--------.
- * |  Shift |      | LwLf | LwHf | LwRt |      |------'    |------|  |------+------+------+------|    `------|      |      |      |      |      | Shift  |
- * `--------+------+------+------+------+------'           |      |  | AlLf | AlCen| AlRt |      |           `------+------+------+------+------+--------'
- *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |(held)|   ⌥  |   ^  |
- *                 `--------------------' |   ⌘  |      |  |(held)|  |             |      |      |  |      |   ⌘  | `--------------------'
+ *  |-------+------+------+------+------+------|   [  |    | InsR |  | BdOut| BdTp | RemBD|      |    |  ]   |------+------+------+------+------+-------|
+ *  |   BS  | Disp-| LfHf | Full | RtHf |Disp+ |------|    |------|  |------+------+------+------|    |------|(held)|      |      |      |      |  BS   |
+ * ,--------+------+------+------+------+------|   -  |    | SelR |  | BdLf | BdBm | BdRt |      |    |  =   |------+------+------+------+------+--------.
+ * |    ⇧   |      | LwLf | LwHf | LwRt |      |------'    |------|  |------+------+------+------|    `------|      |      |      |      |      |   ⇧    |
+ * `--------+------+------+------+------+------'           | SelC |  | AlLf | AlCen| AlRt |      |           `------+------+------+------+------+--------'
+ *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
+ *                 `--------------------' |  BS  |      |  |(held)|  |             |      |      |  |      |  BS  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
- *                                        `------|      | ,----------------. ,-------. ,----------. |      |------'
- *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
+ *                                        `------|  (⌘) | ,----------------. ,-------. ,----------. |  (⌘) |------'
+ *                                               |      | |   Mic Toggle   | | TG(4) | |Cam Toggle| |      | 
  *                                               `------' `----------------' `-------' `----------' `------'
  */
 [_RECT] = LAYOUT(
@@ -198,7 +210,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, PRV_DIS, LF_HALF, FULLSCR, RT_HALF, NXT_DIS, _______,          _______,          BRD_LFT, BRD_BOT, BRD_RGT, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   _______, XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, XXXXXXX,                   _______,          ALN_LFT, ALN_CEN, ALN_RGT, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
                     _______, _______, _______,                            _______,          _______,          _______,                                     _______, _______, _______,                  
-                                               _______, _______,          _______,          RESET,            _______,                   _______, _______                                              
+                                               _______, _______,          _______,          GAM_TOG,          _______,                   _______, _______                                              
+),
+
+/* Keymap 4: Gaming layer (green underglow)    
+ *                                              ,-------------. ,--------------------. ,--------------------.
+ *                                              | Bri- | Bri+ | | Prev | Play | Next | | Mute | Vol- | Vol+ |
+ *     ,---------------------------------------.`-------------' `--------------------' `--------------------',----------------------------------------.
+ *     | `  |   1  |   2  |   3  |   4  |   5  |           ,------.  ,---------------------------.           |   6  |   7  |   8  |   9  |   0  |   \ |
+ *  ,--+----+------+------+------+------+------|           | DelR |  | TG(1)| ShTop|ShBotm| File |           |------+------+------+------+------+-----+-.
+ *  |  Tab  |   Q  |   W  |   E  |   R  |   T  |------.    |------|  |------+------+------+------|    ,------|   Y  |   U  |   I  |   O  |   P  |   '   |
+ *  |-------+------+------+------+------+------|   6  |    | InsR |  | RSrt |  Up  | REnd | NxSh |    |  ]   |------+------+------+------+------+-------|
+ *  |   BS  |   A  |   S  |   D  |   F  |   G  |------|    |------|  |------+------+------+------|    |------| H(3) | J(2) | K(⇧) | L(⌥) | ;(^) |  BS   |
+ * ,--------+------+------+------+------+------|   -  |    | SelR |  | Left | Down | Right| PvSh |    |  =   |------+------+------+------+------+--------.
+ * |    ⇧   |   Z  |   X  |   C  |   V  |   B  |------'    |------|  |------+------+------+------|    `------|   N  |   M  |   ,  |   .  |   /  |   ⇧    |
+ * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
+ *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
+ *                 `--------------------' |  BS  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
+ *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
+ *                                        `------|      | ,----------------. ,-------. ,----------. |  (⌘) |------'
+ *                                               |      | |   Mic Toggle   | | TG(4) | |Cam Toggle| |      | 
+ *                                               `------' `----------------' `-------' `----------' `------'
+ */
+[_QWERTY] = LAYOUT(
+                                                                 _______, _______, _______, _______, _______, _______, _______, _______,                                                               
+  _______, _______, _______, _______, _______, _______,                   _______,          _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, KC_6,             _______,          _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
+  _______, KC_A,    KC_S,    KC_D,    KC_F,    _______, _______,          _______,          _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______,                   _______,          _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+                    _______, _______, _______,                            _______,          _______,          _______,                                     _______, _______, _______,                  
+                                               _______, KC_SPC,           _______,          GAM_TOG,          _______,                   _______, _______                                              
 )
 
 };
