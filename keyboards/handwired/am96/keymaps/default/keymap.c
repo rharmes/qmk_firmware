@@ -28,7 +28,8 @@
 #define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
 #define ARW_TOG TG(_ARROWS)               // Toggles layer 1 on and off
 #define NAV_J LT(_NAV, KC_J)              // Momentarily activate layer 2 when held, and J when tapped
-#define RECT_H LT(_RECT, KC_BSPC)         // Momentarily activate layer 3 when held, and H when tapped
+#define RECT_H LT(_RECT, KC_H)            // Momentarily activate layer 3 when held, and H when tapped
+#define RECT_BS LT(_RECT, KC_BSPC)        // Momentarily activate layer 3 when held, and backspace when tapped
 #define GAM_TOG TG(_GAMING)               // Toggles layer 4 on and off
 
 // Mod-Taps
@@ -95,6 +96,17 @@
 #define LW_LEFT RSFT(RCTL(RGUI(KC_LEFT))) // ⇧^⌘←: Move current window to fill the lower-left quadrant
 #define LW_RGHT RSFT(RCTL(RGUI(KC_RGHT))) // ⇧^⌘→: Move current window to fill the lower-right quadrant
 
+// Combos
+enum combos {
+  DK_CAPSLOCK
+};
+
+const uint16_t PROGMEM dk_combo[] = {KC_D, KC_K, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [DK_CAPSLOCK] = COMBO(dk_combo, KC_CAPSLOCK)
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Keymap 0: QWERTY layer (yellow underglow)    
@@ -130,9 +142,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                              ,-------------. ,--------------------. ,--------------------.
  *                                              | Bri- | Bri+ | | Prev | Play | Next | | Mute | Vol- | Vol+ |
  *     ,---------------------------------------.`-------------' `--------------------' `--------------------',----------------------------------------.
- *     | `  |      |      |      |      |      |           ,------.  ,---------------------------.           | Mute | Vol- | Vol+ |      |      | Kill|
+ *     | `  |      |      |      |      |      |           ,------.  ,---------------------------.           | Mute | Vol- | Vol+ |      |   \  | Kill|
  *  ,--+----+------+------+------+------+------|           | DelR |  | TG(1)|   ÷  |   ×  |   =  |           |------+------+------+------+------+-----+-.
- *  |  Tab  |      |      |      |      |      |------.    |------|  |------+------+------+------|    ,------|      | PvWd |  Up  | NxWd |      | DelR  |
+ *  |  Tab  |      |      |      |      |      |------.    |------|  |------+------+------+------|    ,------|   ]  | PvWd |  Up  | NxWd |   '  | DelR  |
  *  |-------+------+------+------+------+------|   [  |    | InsR |  |   7  |   8  |   9  |   -  |    |  ]   |------+------+------+------+------+-------|
  *  |   BS  |   ^  |   ⌥  |   ⇧  |(held)|      |------|    |------|  |------+------+------+------|    |------| LSrt | Left | Down | Right| LEnd |  BS   |
  * ,--------+------+------+------+------+------|   -  |    | SelR |  |   4  |   5  |   6  |   +  |    |  =   |------+------+------+------+------+--------.
@@ -147,8 +159,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ARROWS] = LAYOUT(
                                                                  _______, _______, _______, _______, _______, _______, _______, _______,                                                               
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          _______, KC_PSLS, KC_PAST, KC_PEQL,                   KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX, KILL_LN,
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,          KC_P7,   KC_P8,   KC_P9,   KC_PMNS,          _______, XXXXXXX, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX, DEL_RT, 
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          _______, KC_PSLS, KC_PAST, KC_PEQL,                   KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, KC_BSLS, KILL_LN,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,          KC_P7,   KC_P8,   KC_P9,   KC_PMNS,          _______, KC_RBRC, PRV_WD,  KC_UP,   NXT_WD,  KC_QUOT, DEL_RT, 
   _______, KC_LCTL, KC_LALT, KC_LSFT, _______, XXXXXXX, _______,          _______,          KC_P4,   KC_P5,   KC_P6,   KC_PPLS,          _______, LN_SRT,  KC_LEFT, KC_DOWN, KC_RGHT, LN_END,  _______,
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          KC_P1,   KC_P2,   KC_P3,   KC_PENT,                   KC_EQL,  CUT,     COPY,    PASTE,   UNDO,    _______,
                     _______, _______, _______,                            _______,          KC_P0,            KC_PDOT,                                     _______, GUI_BL,  GUI_BR,                   
@@ -161,11 +173,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *     ,---------------------------------------.`-------------' `--------------------' `--------------------',----------------------------------------.
  *     | `  | Bri- | Bri+ | Prev | Play | Next |           ,------.  ,---------------------------.           |      |      |      |      |      |   \ |
  *  ,--+----+------+------+------+------+------|           | DelR |  | TG(1)| ShTop|ShBotm| File |           |------+------+------+------+------+-----+-.
- *  |  Tab  |      | Home | WhDn | End  | PgUp |------.    |------|  |------+------+------+------|    ,------|      |      |      |      |      |   '   |
+ *  |  Tab  |   `  | Home | WhDn | End  |   [  |------.    |------|  |------+------+------+------|    ,------|      |      |      |      |      |   '   |
  *  |-------+------+------+------+------+------|   [  |    | InsR |  | RSrt |  Up  | REnd | NxSh |    |  ]   |------+------+------+------+------+-------|
- *  |   BS  |      | WhRt | WhUp | WhLf | PgDn |------|    |------|  |------+------+------+------|    |------|      |(held)|   ⇧  |   ⌥  |   ^  |  BS   |
+ *  |   BS  |      | WhRt | WhUp | WhLf |      |------|    |------|  |------+------+------+------|    |------|      |(held)|   ⇧  |   ⌥  |   ^  |  BS   |
  * ,--------+------+------+------+------+------|   -  |    | SelR |  | Left | Down | Right| PvSh |    |  =   |------+------+------+------+------+--------.
- * |    ⇧   |      |      |      |      |   -  |------'    |------|  |------+------+------+------|    `------|      |      |      |      |      |   ⇧    |
+ * |    ⇧   |      |      |  ⌘[  |  ⌘]  |   -  |------'    |------|  |------+------+------+------|    `------|      |      |      |      |      |   ⇧    |
  * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
  *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
  *                 `--------------------' |  BS  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
@@ -177,9 +189,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAV] = LAYOUT(
                                                                  _______, _______, _______, _______, _______, _______, _______, _______,                                                               
   _______, KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-  _______, XXXXXXX, KC_HOME, KC_WH_D, KC_END,  KC_PGUP, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-  _______, XXXXXXX, KC_WH_R, KC_WH_U, KC_WH_L, KC_PGDN, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, _______, KC_RSFT, KC_RALT, KC_RCTL, _______,
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MINS,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  _______, KC_GRV,  KC_HOME, KC_WH_D, KC_END,  KC_LBRC, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+  _______, XXXXXXX, KC_WH_R, KC_WH_U, KC_WH_L, XXXXXXX, _______,          _______,          _______, _______, _______, _______,          _______, XXXXXXX, _______, KC_RSFT, KC_RALT, KC_RCTL, _______,
+  _______, XXXXXXX, XXXXXXX, GUI_BL,  GUI_BR,  KC_MINS,                   _______,          _______, _______, _______, _______,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
                     _______, _______, _______,                            _______,          _______,          _______,                                     _______, _______, _______,                  
                                                _______, _______,          _______,          RESET,            _______,                   _______, _______                                              
 ),
@@ -213,7 +225,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                _______, _______,          _______,          GAM_TOG,          _______,                   _______, _______                                              
 ),
 
-/* Keymap 4: Gaming layer (green underglow)    
+/* Keymap 4: Gaming layer (green underglow)
  *                                              ,-------------. ,--------------------. ,--------------------.
  *                                              | Bri- | Bri+ | | Prev | Play | Next | | Mute | Vol- | Vol+ |
  *     ,---------------------------------------.`-------------' `--------------------' `--------------------',----------------------------------------.
@@ -227,9 +239,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
  *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
  *                 `--------------------' |  BS  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
- *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
+ *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |
  *                                        `------|      | ,----------------. ,-------. ,----------. |  (⌘) |------'
- *                                               |      | |   Mic Toggle   | | TG(4) | |Cam Toggle| |      | 
+ *                                               |      | |   Mic Toggle   | | TG(4) | |Cam Toggle| |      |
  *                                               `------' `----------------' `-------' `----------' `------'
  */
 [_QWERTY] = LAYOUT(
