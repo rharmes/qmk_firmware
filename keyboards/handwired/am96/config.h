@@ -11,11 +11,11 @@
 #define PRODUCT         keyboard
 #define DESCRIPTION     Keyboard
 
-/* key matrix size */
+/* Key matrix size */
 #define MATRIX_ROWS 6
 #define MATRIX_COLS 17
 
-/* key matrix pins */
+/* Key matrix pins */
 #define MATRIX_ROW_PINS { D3, D2, D1, D0, D4, C6 }
 #define MATRIX_COL_PINS { F4, F5, F6, F7, B1, B3, B2, B6, F0, F1, C7, D5, B7, C5, B4, E6, D7 }
 #define UNUSED_PINS
@@ -23,7 +23,7 @@
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
-/* number of backlight levels */
+/* Number of backlight levels */
 #ifdef BACKLIGHT_PIN
 #define BACKLIGHT_LEVELS 0
 #endif
@@ -32,7 +32,7 @@
 #define DEBOUNCING_DELAY 5
 
 /* Use the default tapping term */
-#define TAPPING_TERM 200
+#define TAPPING_TERM 180
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
@@ -40,13 +40,11 @@
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-/* key combination for command */
-#define IS_COMMAND() ( \
-    keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \
-)
-
-/* prevent stuck modifiers */
+/* Prevent stuck modifiers */
 #define PREVENT_STUCK_MODIFIERS
+
+/* Set the number of combos */
+#define COMBO_COUNT 1
 
 #define RGB_DI_PIN B0
 #ifdef RGB_DI_PIN
