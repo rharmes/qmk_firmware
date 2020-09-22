@@ -23,11 +23,6 @@
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
-/* Number of backlight levels */
-#ifdef BACKLIGHT_PIN
-#define BACKLIGHT_LEVELS 0
-#endif
-
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCING_DELAY 5
 
@@ -36,9 +31,6 @@
 
 /* Prevent stuck modifiers */
 #define PREVENT_STUCK_MODIFIERS
-
-/* Set the number of combos */
-#define COMBO_COUNT 1
 
 #define RGB_DI_PIN B0
 #ifdef RGB_DI_PIN
