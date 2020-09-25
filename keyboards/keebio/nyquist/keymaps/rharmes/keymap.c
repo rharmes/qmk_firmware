@@ -22,6 +22,7 @@
 #define _QWERTY 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define _ARROWS 1
 #define _NAV 2
 #define _RECT 3
@@ -34,10 +35,16 @@
 #define _NAV 2
 #define _RECT 3
 >>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
+=======
+#define _ARROWS 1
+#define _NAV 2
+#define _RECT 3
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
 
 // Layers and mods
 #define SPC_GUI LGUI_T(KC_SPC)            // ⌘ when held, Sapce when tapped
 #define ENT_GUI RGUI_T(KC_ENT)            // ⌘ when held, Enter when tapped
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 #define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
@@ -55,13 +62,18 @@
 #define UNDO LGUI(KC_Z)                   // ⌘Z: Undo
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
 =======
+=======
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
 #define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
 #define NAV_J LT(_NAV, KC_J)              // Momentarily activate layer 2 when held, and J when tapped
 #define RECT_BS LT(_RECT, KC_BSPC)        // Momentarily activate layer 3 when held, and backspace when tapped
 
 // Shortcuts
 #define LOCK LCTL(LGUI(KC_Q))             // ⌘^Q: Lock screen
+<<<<<<< HEAD
 >>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
+=======
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
 #define CUT LGUI(KC_X)                    // ⌘X: Cut
 #define COPY LGUI(KC_C)                   // ⌘C: Copy
 #define PASTE LGUI(KC_V)                  // ⌘C: Paste
@@ -72,12 +84,16 @@
 #define DEL_RT RCTL(KC_D)                 // ^D: Delete the character to the right of the insertion point
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define KILL_LN RCTL(KC_K)                // ^K: Kill line
 =======
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
 =======
 #define KILL_LN RCTL(KC_K)                // ^K: Kill line
 >>>>>>> Add shortcut to delete line, as well as Home and End keys.
+=======
+#define KILL_LN RCTL(KC_K)                // ^K: Kill line
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
 #define GUI_BL RGUI(KC_LBRC)              // ⌘[: Previous Channel in Slack
 #define GUI_BR RGUI(KC_RBRC)              // ⌘]: Next Channel in Slack
 
@@ -98,6 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* QWERTY (yellow underglow)
 =======
 /* QWERTY
@@ -105,11 +122,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 =======
 /* QWERTY (yellow underglow)
 >>>>>>> Added support for lighting layers.
+=======
+/* QWERTY (yellow underglow)
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
  * .-----------------------------------------.     .-----------------------------------------.
  * |  `   |   1  |   2  |   3  |   4  |   5  |     |   6  |   7  |   8  |   9  |   0  |  BS  |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * |  Tab |   Q  |   W  |   E  |   R  |   T  |     |   Y  |   U  |   I  |   O  |   P  |  \   |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -133,11 +154,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Lock |      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | RECT |   [  |   ]  |   -  |   =  |
 >>>>>>> Adjusted the keys for triggering the layers, and added another layer for scrolling.
 =======
+=======
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
  * |  BS  |   A  |   S  |   D  | F(1) |   G  |     |   H  | J(2) |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|   Z  |   X  |   C  |   V  |   B  |     |   N  |   M  |   ,  |   .  |   /  |Rshft |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lock |      | LCtrl| LAlt |  Esc |  Spc |     |  Ent | BS(3)|   [  |   ]  |   -  |   =  |
+<<<<<<< HEAD
 >>>>>>> Added a third backspace, on the layer 3 mod.
  * `-----------------------------------------'     '-----------------------------------------'
  */
@@ -151,17 +175,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
   LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT,    KC_LBRC, KC_RBRC, KC_MINS, KC_EQL \
 =======
+=======
+ * `-----------------------------------------'     '-----------------------------------------'
+ */
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
 [_QWERTY] = LAYOUT(
   KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLASH,
   KC_BSPC,  KC_A,    KC_S,    KC_D,    ARW_F,   KC_G,    KC_H,    NAV_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
 <<<<<<< HEAD
+<<<<<<< HEAD
   LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT,    KC_LBRC, KC_RBRC, KC_MINS, KC_EQL
 >>>>>>> Remove unnecessary trailing backslashes in the LAYOUT blocks,
 =======
   LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT_BS, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL
 >>>>>>> Added a third backspace, on the layer 3 mod.
+=======
+  LOCK,     XXXXXXX, KC_LCTL, KC_LALT, KC_ESC,  SPC_GUI, ENT_GUI, RECT_BS, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
 ),
 
 /* ARROWS (blue underglow) - Cursor movement, media keys, and clipboard shortcuts
@@ -209,6 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* RECT (lavender underglow) - Window management shortcuts for Rectangle
  * .-----------------------------------------.     .-----------------------------------------.
  * |      | Hue+ | Sat+ | Val+ | Plain| RGB T|     |      |      |      |      |      |  BS  |
+<<<<<<< HEAD
 =======
   KC_BSPC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
 =======
@@ -272,6 +305,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 =======
  * |      | Hue+ | Sat+ | Val+ | Plain| RGB T|     |      |      |      |      |      |  BS  |
 >>>>>>> Added RGB keycodes.
+=======
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * |  Tab |      | UpLf | UpHf | UpRt |      |     |      |      |      |      |      |      |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
@@ -279,6 +314,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
  * | Lshft|      | LwLf | LwHf | LwRt |      |     |      |      |      |      |      |Rshft |
  * |------+------+------+------+------+------|     |------+------+------+------+------+------|
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
  * | Reset|      | LCtrl| LAlt |  Esc |  Spc |     |  Ent |(Held)|      |      |      |      |
@@ -311,12 +347,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
   RESET,    XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 =======
+=======
+ * | Reset|      | LCtrl| LAlt |  Esc |  Spc |     |  Ent |(Held)|      |      |      |      |
+ * `-----------------------------------------'     '-----------------------------------------'
+ */
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
 [_RECT] = LAYOUT(
   XXXXXXX,  RGB_HUI, RGB_SAI, RGB_VAI, RGB_M_P, RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   _______,  XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   _______,  PRV_DIS, LF_HALF, FULLSCR, RT_HALF, NXT_DIS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   _______,  XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   RESET,    XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+<<<<<<< HEAD
 >>>>>>> Remove unnecessary trailing backslashes in the LAYOUT blocks,
 )
 
@@ -324,12 +366,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 <<<<<<< HEAD
 =======
 >>>>>>> Added support for lighting layers.
+=======
+)
+
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
 };
 
 // Lighting layers
 const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
     {0, 12, 33, 255, 255} // #ffc700: 47, 100, 100
 );
 const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -340,6 +389,7 @@ const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 12, 168, 120, 255} // #878eff: 237, 47, 100
+<<<<<<< HEAD
 =======
     {0, 12, HSV_GOLD}
 =======
@@ -359,6 +409,8 @@ const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 =======
     {0, 12, 168, 120, 255} // #878eff: 237, 47, 100
 >>>>>>> Tweak the colors for the lighting layers.
+=======
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
@@ -383,8 +435,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 };
 >>>>>>> Initial commit of my Nyquist keymap, based on my current Ergodox layout: https://configure.ergodox-ez.com/ergodox-ez/layouts/qn5G5/latest/0
 =======
 >>>>>>> Added support for lighting layers.
+=======
+>>>>>>> 98b9290203ad005ca732a6c689325c9bafa2a830
