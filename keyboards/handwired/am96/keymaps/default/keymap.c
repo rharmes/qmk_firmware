@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |    ⇧   |   Z  |   X  |   C  |   V  |   B  |------'    |------|  |------+------+------+------|    `------|   N  |   M  |   ,  |   .  |   /  |   ⇧    |
  * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
  *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
- *                 `--------------------' |  BS  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
+ *                 `--------------------' |  Del |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
  *                                        `------|  (⌘) | ,----------------. ,-------. ,----------. |  (⌘) |------'
  *                                               |      | |   Mic Toggle   | |ScrnLck| |Cam Toggle| |      | 
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_BSPC, CTL_A,   ALT_S,   SHIFT_D, ARW_F,   KC_G,    KC_MINS,          SEL_ROW,          KC_LEFT, KC_DOWN, KC_RGHT, PRV_SHT,          KC_EQL,  RECT_H,  NAV_J,   SHIFT_K, ALT_L,   CTL_QT,  KC_BSPC,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      SEL_COL,          CUT,     COPY,    PASTE,   KC_PENT,                   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                     KC_LCTL, KC_LALT, KC_ESC,                             RECT_BS,          PST_VAL,          PST_STY,                                     KC_TAB,  KC_RALT, KC_RCTL,                  
-                                               KC_BSPC, CMD_SPC,          MIC_TOG,          LOCK,             CAM_TOG,                   CMD_ENT, KC_BSPC                                              
+                                               KC_DEL, CMD_SPC,          MIC_TOG,          LOCK,             CAM_TOG,                   CMD_ENT, KC_BSPC                                              
 ),
 
 /* Keymap 1: Arrows layer (blue underglow) - Cursor movement, media keys, numpad, and clipboard shortcuts   
@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |    ⇧   |      |      |      |      |      |------'    |------|  |------+------+------+------|    `------|      |  Cut | Copy | Paste|      |   ⇧    |
  * `--------+------+------+------+------+------'           | SelC |  |   1  |   2  |   3  |      |           `------+------+------+------+------+--------'
  *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
- *                 `--------------------' |  BS  |      |  | BS(3)|  |      0      |   .  |      |  |      |  BS  | `--------------------'
+ *                 `--------------------' |  Del |      |  | BS(3)|  |      0      |   .  |      |  |      |  BS  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
  *                                        `------|  (⌘) | ,----------------. ,-------. ,----------. |  (⌘) |------'
  *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
@@ -169,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |    ⇧   |      |      |  ⌘[  |  ⌘]  |      |------'    |------|  |------+------+------+------|    `------|      |      |      |      |      |   ⇧    |
  * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
  *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
- *                 `--------------------' |  BS  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
+ *                 `--------------------' |  Del |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
  *                                        `------|  (⌘) | ,----------------. ,-------. ,----------. |  (⌘) |------'
  *                                               |      | |   Mic Toggle   | | Reset | |Cam Toggle| |      | 
@@ -198,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |    ⇧   |      | LwLf | LwHf | LwRt |      |------'    |------|  |------+------+------+------|    `------|      |      |      |      |      |   ⇧    |
  * `--------+------+------+------+------+------'           | SelC |  | AlLf | AlCen| AlRt |      |           `------+------+------+------+------+--------'
  *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
- *                 `--------------------' |  BS  |      |  |(held)|  |             |      |      |  |      |  BS  | `--------------------'
+ *                 `--------------------' |  Del |      |  |(held)|  |             |      |      |  |      |  BS  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |  
  *                                        `------|  (⌘) | ,----------------. ,-------. ,----------. |  (⌘) |------'
  *                                               |      | |   Mic Toggle   | | TG(4) | |Cam Toggle| |      | 
@@ -227,7 +227,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |    ⇧   |   Z  |   X  |   C  |   V  |   B  |------'    |------|  |------+------+------+------|    `------|   N  |   M  |   ,  |   .  |   /  |   ⇧    |
  * `--------+------+------+------+------+------'           | SelC |  |  Cut | Copy | Paste|      |           `------+------+------+------+------+--------'
  *                 |   ^  |   ⌥  |  Esc | ,-------------.  |------|  |------+------+------+  Ent |  ,-------------. |  Tab |   ⌥  |   ^  |
- *                 `--------------------' |  BS  |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
+ *                 `--------------------' |  Del |      |  | BS(3)|  | Paste Values|PstSty|      |  |      |  BS  | `--------------------'
  *                                        |      |  Spc |  '------'  `---------------------------'  |  Ent |      |
  *                                        `------|      | ,----------------. ,-------. ,----------. |  (⌘) |------'
  *                                               |      | |   Mic Toggle   | | TG(4) | |Cam Toggle| |      |
@@ -247,19 +247,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Lighting layers
 const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 33, 255, 255} // #ffc700: 47, 100, 100
+    {0, 2, 33, 255, 255} // #ffc700: 47, 100, 100
 );
 const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 140, 255, 232} // #00a3e9: 198, 100, 91
+    {0, 2, 140, 255, 232} // #00a3e9: 198, 100, 91
 );
 const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 0, 184, 237} // #ee4343: 0, 72, 93
+    {0, 2, 0, 184, 237} // #ee4343: 0, 72, 93
 );
 const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 168, 120, 255} // #878eff: 237, 47, 100
+    {0, 2, 168, 120, 255} // #878eff: 237, 47, 100
 );
 const rgblight_segment_t PROGMEM gaming_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_GREEN} // #878eff: 237, 47, 100
+    {0, 2, HSV_GREEN} // #878eff: 237, 47, 100
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
