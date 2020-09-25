@@ -244,3 +244,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 
 };
+
+// Lighting layers
+const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, 33, 255, 255} // #ffc700: 47, 100, 100
+);
+const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, 140, 255, 232} // #00a3e9: 198, 100, 91
+);
+const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, 0, 184, 237} // #ee4343: 0, 72, 93
+);
+const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, 168, 120, 255} // #878eff: 237, 47, 100
+);
+const rgblight_segment_t PROGMEM gaming_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, HSV_GREEN} // #878eff: 237, 47, 100
+);
+
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    qwerty_layer,
+    arrow_layer,
+    nav_layer,
+    rect_layer,
+    gaming_layer
+);
+
+void keyboard_post_init_user(void) {
+    // Enable the LED layers
+    rgblight_layers = my_rgb_layers;
+    rgblight_set_layer_state(_QWERTY, 1);
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    // Both layers will light up if both kb layers are active
+    rgblight_set_layer_state(_QWERTY, layer_state_cmp(state, _QWERTY));
+    rgblight_set_layer_state(_ARROWS, layer_state_cmp(state, _ARROWS));
+    rgblight_set_layer_state(_NAV, layer_state_cmp(state, _NAV));
+    rgblight_set_layer_state(_RECT, layer_state_cmp(state, _RECT));
+    rgblight_set_layer_state(_GAMING, layer_state_cmp(state, _GAMING));
+    return state;
+}
