@@ -46,6 +46,9 @@
 /* Use the default tapping term */
 #define TAPPING_TERM 200
 
+/* Requires holding both keys for the TAPPING_TERM to trigger the hold function. */
+#define IGNORE_MOD_TAP_INTERRUPT
+
 /* Prevent stuck modifiers */
 #define PREVENT_STUCK_MODIFIERS
 
