@@ -26,7 +26,7 @@
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    rharmes
 #define PRODUCT         AM96
-#define DESCRIPTION     A joined-split ergo keyboard with central numpad
+#define DESCRIPTION     A fixed split ergo keyboard with central numpad
 
 /* Key matrix size */
 #define MATRIX_ROWS 6
@@ -49,6 +49,10 @@
 /* Prevent stuck modifiers */
 #define PREVENT_STUCK_MODIFIERS
 
+/* Combos */
+#define COMBO_COUNT 1
+
+/* RBG indicator lights */
 #define RGB_DI_PIN B0
 #define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 2

@@ -247,19 +247,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Lighting layers
 const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 33, 255, 255} // #ffc700: 47, 100, 100
+    {0, 2, 33, 255, 100} // #ffc700: 47, 100, 100
 );
 const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 140, 255, 232} // #00a3e9: 198, 100, 91
+    {0, 2, 140, 255, 100} // #00a3e9: 198, 100, 91
 );
 const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 0, 184, 237} // #ee4343: 0, 72, 93
+    {0, 2, 0, 184, 100} // #ee4343: 0, 72, 93
 );
 const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 168, 120, 255} // #878eff: 237, 47, 100
+    {0, 2, 183, 217, 100} // #6726ff: 258, 85, 100
 );
 const rgblight_segment_t PROGMEM gaming_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, HSV_GREEN} // #878eff: 237, 47, 100
+    {0, 2, 85, 255, 100} // HSV_GREEN
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
@@ -285,3 +285,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(_GAMING, layer_state_cmp(state, _GAMING));
     return state;
 }
+
+// Combos
+enum combos {
+  ESC_TAB_CAPSLOCK
+};
+
+const uint16_t PROGMEM esc_tab_combo[] = {KC_ESC, KC_TAB, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [ESC_TAB_CAPSLOCK] = COMBO(esc_tab_combo, KC_CAPSLOCK)
+};
