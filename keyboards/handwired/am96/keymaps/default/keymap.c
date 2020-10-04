@@ -16,7 +16,7 @@
 #include QMK_KEYBOARD_H
 
 // Layout: http://www.keyboard-layout-editor.com/#/gists/aaa64d553c73dd6a8e15c7e91637d76c
-// Finger assignments: http://www.keyboard-layout-editor.com/#/gists/26b92acc628d7178145297d07cd5025a
+// Wiring diagram and pinout: https://docs.google.com/spreadsheets/d/1Jt-qJ7kCt01uAqz-X2BWs5qMJvYTSCRMToumnmscFEI/edit?usp=sharing
 
 #define _QWERTY 0
 #define _ARROWS 1
@@ -131,9 +131,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                              ,-------------. ,--------------------. ,--------------------.
  *                                              | Bri- | Bri+ | | Prev | Play | Next | | Mute | Vol- | Vol+ |
  *     ,---------------------------------------.`-------------' `--------------------' `--------------------',----------------------------------------.
- *     | `  |      |      |      |      |      |           ,------.  ,---------------------------.           | Mute | Vol- | Vol+ |   \  | Kill |     |
+ *     | `  |      |      |      |      |      |           ,------.  ,---------------------------.           | Mute | Vol- | Vol+ |   \  |      |     |
  *  ,--+----+------+------+------+------+------|           | DelR |  | TG(1)|   ÷  |   ×  |   =  |           |------+------+------+------+------+-----+-.
- *  |  Tab  |      |      |      |      |      |------.    |------|  |------+------+------+------|    ,------|   ]  |      |  Up  |      | DelR |       |
+ *  |  Tab  |      |      |      |      |      |------.    |------|  |------+------+------+------|    ,------|   ]  | PvWd |  Up  | NxWd | Kill |       |
  *  |-------+------+------+------+------+------|   [  |    | InsR |  |   7  |   8  |   9  |   -  |    |  ]   |------+------+------+------+------+-------|
  *  |   BS  |   ^  |   ⌥  |   ⇧  |(held)|      |------|    |------|  |------+------+------+------|    |------|   =  | Left | Down | Right|   ;  |  BS   |
  * ,--------+------+------+------+------+------|   -  |    | SelR |  |   4  |   5  |   6  |   +  |    |  =   |------+------+------+------+------+--------.
@@ -148,8 +148,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ARROWS] = LAYOUT(
                                                                  _______, _______, _______, _______, _______, _______, _______, _______,                                                               
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          _______, KC_PSLS, KC_PAST, KC_PEQL,                   KC_MUTE, KC_VOLD, KC_VOLU, KC_BSLS, KILL_LN, XXXXXXX,
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,          KC_P7,   KC_P8,   KC_P9,   KC_PMNS,          _______, KC_RBRC, XXXXXXX, KC_UP,   XXXXXXX, DEL_RT,  XXXXXXX, 
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          _______, KC_PSLS, KC_PAST, KC_PEQL,                   KC_MUTE, KC_VOLD, KC_VOLU, KC_BSLS, XXXXXXX, XXXXXXX,
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          _______,          KC_P7,   KC_P8,   KC_P9,   KC_PMNS,          _______, KC_RBRC, PRV_WD,  KC_UP,   NXT_WD,  KILL_LN, XXXXXXX, 
   _______, KC_LCTL, KC_LALT, KC_LSFT, _______, XXXXXXX, _______,          _______,          KC_P4,   KC_P5,   KC_P6,   KC_PPLS,          _______, KC_EQL,  KC_LEFT, KC_DOWN, KC_RGHT, KC_SCLN, _______,
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,          KC_P1,   KC_P2,   KC_P3,   KC_PENT,                   XXXXXXX, CUT,     COPY,    PASTE,   XXXXXXX, _______,
                     _______, _______, _______,                            _______,          KC_P0,            KC_PDOT,                                     _______, _______, _______,                   
