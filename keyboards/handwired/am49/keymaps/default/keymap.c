@@ -160,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                   |      |  Spc |      | |Mic Toggle| | Reset | |Cam Toggle| |      |  Ent |      |
  *                                   |  Esc |  (⌘) |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
- *.                                   `------'------'------'                                     `------'------'------'
+ *                                   `------'------'------'                                     `------'------'------'
  */
 [_NAV] = LAYOUT(
   KC_BRID, KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                   |      |  Spc |      | |Mic Toggle| | TG(4) | |Cam Toggle| |      |  Ent |      |
  *                                   |  Esc |  (⌘) |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
- *.                                   `------'------'------'                                     `------'------'------'
+ *                                   `------'------'------'                                     `------'------'------'
  */
 [_RECT] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -210,7 +210,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                   |      |  Spc |      | |Mic Toggle| | TG(4) | |Cam Toggle| |      |  Ent |      |
  *                                   |  Esc |      |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
- *.                                   `------'------'------'                                     `------'------'------'
+ *                                   `------'------'------'                                     `------'------'------'
  */
 [_GAMING] = LAYOUT(
   _______, _______, _______, _______, _______,                                                                _______, _______, _______, _______, _______,
