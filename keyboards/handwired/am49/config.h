@@ -34,7 +34,7 @@
 
 /* key matrix pins */
 #define MATRIX_ROW_PINS { D3, D2, D1, D0, D4 }
-#define MATRIX_COL_PINS { F4, F5, F6, F7, B1, B3, B2, B6, C5, B4 }
+#define MATRIX_COL_PINS { F4, F5, F6, F7, B1, B3, B2, B6, F0, F1 }
 #define UNUSED_PINS
 
 /* COL2ROW or ROW2COL */
