@@ -58,5 +58,5 @@
 /* RBG indicator lights */
 #define RGB_DI_PIN B0
 #define RGBLIGHT_ANIMATIONS
-#define RGBLED_NUM 6
-#define RGBLIGHT_LAYERS 5
+#define RGBLED_NUM 2
+#define RGBLIGHT_LAYERS 6

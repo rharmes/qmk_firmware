@@ -18,16 +18,17 @@
 #define _QWERTY 0
 #define _ARROWS 1
 #define _NAV 2
-#define _RECT 3
-#define _GAMING 4
+#define _NUMPAD 3
+#define _RECT 4
+#define _GAMING 5
 
 // Layers
 #define ARW_F LT(_ARROWS, KC_F)           // Momentarily activate layer 1 when held, and F when tapped
 #define ARW_TOG TG(_ARROWS)               // Toggles layer 1 on and off
 #define NAV_J LT(_NAV, KC_J)              // Momentarily activate layer 2 when held, and J when tapped
-#define RECT_H LT(_RECT, KC_H)            // Momentarily activate layer 3 when held, and H when tapped
-#define RECT_BS LT(_RECT, KC_BSPC)        // Momentarily activate layer 3 when held, and backspace when tapped
-#define GAM_TOG TG(_GAMING)               // Toggles layer 4 on and off
+#define NUM_G LT(_NUMPAD, KC_G)           // Momentarily activate layer 3 when held, and G when tapped
+#define RECT_H LT(_RECT, KC_H)            // Momentarily activate layer 4 when held, and H when tapped
+#define GAM_TOG TG(_GAMING)               // Toggles layer 5 on and off
 
 // Mod-Taps
 #define CMD_SPC LGUI_T(KC_SPC)            // ⌘ when held, Sapce when tapped
@@ -93,6 +94,9 @@
 #define LW_LEFT RSFT(RCTL(RGUI(KC_LEFT))) // ⇧^⌘←: Move current window to fill the lower-left quadrant
 #define LW_RGHT RSFT(RCTL(RGUI(KC_RGHT))) // ⇧^⌘→: Move current window to fill the lower-right quadrant
 
+// RGB
+#define BRIGHTNESS 15
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Keymap 0: QWERTY layer (yellow underglow)    
@@ -102,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      |   Q  |   W  |   E  |   R  |   T  |                                                                   |   Y  |   U  |   I  |   O  |   P  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      | A(^) | S(⌥) | D(⇧) | F(1) |   G  |                                                                   | H(3) | J(2) | K(⇧) | L(⌥) | '(^) |
+ *      | A(^) | S(⌥) | D(⇧) | F(1) | G(3) |                                                                   | H(4) | J(2) | K(⇧) | L(⌥) | '(^) |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      |   Z  |   X  |   C  |   V  |   B  |                                                                   |   N  |   M  |   ,  |   .  |   /  |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
@@ -115,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT(
   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                                                   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   
   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                                                   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   
-  CTL_A,   ALT_S,   SHIFT_D, ARW_F,   KC_G,                                                                   RECT_H,  NAV_J,   SHIFT_K, ALT_L,   CTL_QT, 
+  CTL_A,   ALT_S,   SHIFT_D, ARW_F,   NUM_G,                                                                  RECT_H,  NAV_J,   SHIFT_K, ALT_L,   CTL_QT, 
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                                                   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
                                       KC_ESC,  CMD_SPC, KC_DEL,  MIC_TOG, SCR_LCK, CAM_TOG, KC_BSPC, CMD_ENT, KC_TAB                                      
 ),
@@ -170,7 +174,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       _______, _______, _______, _______, RESET,   _______, _______, _______, _______                                     
 ),
 
-/* Keymap 3: Rectangle layer (lavender underglow) - Window management shortcuts for Rectangle
+/* Keymap 3: Numpad
+ *
+ *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
+ *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
+ *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
+ *      |      |      |      |      |      |                                                                   |      |   7  |   8  |   9  |      |
+ *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
+ *      |   ^  |   ⌥  |   ⇧  |      |(held)|                                                                   |      |   4  |   5  |   6  |   0  |
+ *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
+ *      |      |      |      |      |      |                                                                   |      |   1  |   2  |   3  |   .  |
+ *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
+ *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
+ *                                   |      |  Spc |      | |Mic Toggle| | Reset | |Cam Toggle| |      |  Ent |      |
+ *                                   |  Esc |  (⌘) |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
+ *                                   |      |      |      |                                     |      |      |      |
+ *                                   `------'------'------'                                     `------'------'------'
+ */
+[_NUMPAD] = LAYOUT(
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX,
+  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, _______,                                                                XXXXXXX, KC_4,    KC_5,    KC_6,    KC_0,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PDOT,
+                                      _______, _______, _______, _______, RESET,   _______, _______, _______, _______                                     
+),
+
+/* Keymap 4: Rectangle layer (lavender underglow) - Window management shortcuts for Rectangle
  *     
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
@@ -182,7 +211,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |      | LwLf | LwHf | LwRt |      |                                                                   |      |      |      |      |      |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
  *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
- *                                   |      |  Spc |      | |Mic Toggle| | TG(4) | |Cam Toggle| |      |  Ent |      |
+ *                                   |      |  Spc |      | |Mic Toggle| | TG(5) | |Cam Toggle| |      |  Ent |      |
  *                                   |  Esc |  (⌘) |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
  *                                   `------'------'------'                                     `------'------'------'
@@ -195,7 +224,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       _______, _______, _______, _______, GAM_TOG, _______, _______, _______, _______                                     
 ),
 
-/* Keymap 4: Gaming layer (green underglow)
+/* Keymap 5: Gaming layer (green underglow)
  *                                          
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |   1  |   2  |   3  |   4  |   5  |                                                                   |   6  |   7  |   8  |   9  |   0  |
@@ -207,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |   Z  |   X  |   C  |   V  |   B  |                                                                   |   N  |   M  |   ,  |   .  |   /  |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
  *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
- *                                   |      |  Spc |      | |Mic Toggle| | TG(4) | |Cam Toggle| |      |  Ent |      |
+ *                                   |      |  Spc |      | |Mic Toggle| | TG(5) | |Cam Toggle| |      |  Ent |      |
  *                                   |  Esc |      |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
  *                                   `------'------'------'                                     `------'------'------'
@@ -222,27 +251,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// Lighting layers
+// Lighting layer
 const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 33, 255, 100} // #ffc700: 47, 100, 100
+    {0, 1, 0, 0, 0},
+    {1, 1, 41, 255, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 140, 255, 100} // #00a3e9: 198, 100, 91
+    {0, 1, 0, 0, 0},
+    {1, 1, 140, 255, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 0, 184, 100} // #ee4343: 0, 72, 93
+    {0, 1, 0, 0, 0},
+    {1, 1, 214, 153, BRIGHTNESS}
+);
+const rgblight_segment_t PROGMEM numpad_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, 0, 0, 0},
+    {1, 1, 14, 255, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 183, 217, 100} // #6726ff: 258, 85, 100
+    {0, 1, 0, 0, 0},
+    {1, 1, 199, 217, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM gaming_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 2, 85, 255, 100} // HSV_GREEN
+    {0, 1, 0, 0, 0},
+    {1, 1, 85, 255, BRIGHTNESS}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     qwerty_layer,
     arrow_layer,
     nav_layer,
+    numpad_layer,
     rect_layer,
     gaming_layer
 );
@@ -258,6 +297,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(_QWERTY, layer_state_cmp(state, _QWERTY));
     rgblight_set_layer_state(_ARROWS, layer_state_cmp(state, _ARROWS));
     rgblight_set_layer_state(_NAV, layer_state_cmp(state, _NAV));
+    rgblight_set_layer_state(_NUMPAD, layer_state_cmp(state, _NUMPAD));
     rgblight_set_layer_state(_RECT, layer_state_cmp(state, _RECT));
     rgblight_set_layer_state(_GAMING, layer_state_cmp(state, _GAMING));
     return state;
