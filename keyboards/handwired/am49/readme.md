@@ -7,8 +7,8 @@ The name comes from the ⌘ symbol on the Command key (which has prominent place
 The layout depends heavily on using home row mod-taps (since there are no stand-alone mod keys), and tries to keep fingers within 1U on their home positions (there is a number row, but the numpad layer means you don't have to use it).
 
 * **Keyboard Maintainer**: Ross Harmes
-* **Hardware Availability**: You will have to fabricate your own plate and case, and handwire the switches. I created a detailed guide to designing and building your own keyboard using this layout as my example: [makeakeyboard.com](https://makeakeyboard.com/).
-* **Layout**: [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/#/gists/aaa64d553c73dd6a8e15c7e91637d76c)
+* **Hardware Availability**: You will have to fabricate your own plate and case, and handwire the switches. I created a detailed guide to designing and building your own keyboard using this layout as my example: [makeakeyboard.com](https://makeakeyboard.com/)
+* **Layout**: [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/#/gists/d7aab6b9a125b85cd1828c0afb6f9068)
 
 ![AM49 on my desk](https://makeakeyboard.com/images/assembly-final-1520.jpg)
 
