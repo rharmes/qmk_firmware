@@ -6,8 +6,10 @@ The name comes from the ⌘ symbol on the Command key (which has prominent place
 
 The layout depends heavily on using home row mod-taps (since there are no stand-alone mod keys), and tries to keep fingers within 1U on their home positions (there is a number row, but the numpad layer means you don't have to use it).
 
-Keyboard Maintainer: Ross Harmes
-Hardware Availability: You will have to fabricate your own plate and case, and handwire the switches. I created a detailed guide to designing and building your own keyboard using this layout as my example: [makeakeyboard.com](https://makeakeyboard.com/).
-Layout: [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/#/gists/aaa64d553c73dd6a8e15c7e91637d76c)
+* Keyboard Maintainer: Ross Harmes
+* Hardware Availability: You will have to fabricate your own plate and case, and handwire the switches. I created a detailed guide to designing and building your own keyboard using this layout as my example: [makeakeyboard.com](https://makeakeyboard.com/).
+* Layout: [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/#/gists/aaa64d553c73dd6a8e15c7e91637d76c)
+
+![AM49 on my desk](https://makeakeyboard.com/images/assembly-final-1520.webp)
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
