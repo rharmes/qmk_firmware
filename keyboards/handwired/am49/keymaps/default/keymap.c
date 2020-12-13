@@ -95,7 +95,7 @@
 #define LW_RGHT RSFT(RCTL(RGUI(KC_RGHT))) // ⇧^⌘→: Move current window to fill the lower-right quadrant
 
 // RGB
-#define BRIGHTNESS 15
+#define BRIGHTNESS 40
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -253,28 +253,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Lighting layer
 const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 0, 0, 0},
-    {1, 1, 41, 255, BRIGHTNESS}
+    {0, 1, 33, 255, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 0, 0, 0},
-    {1, 1, 140, 255, BRIGHTNESS}
+    {0, 1, 140, 255, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 0, 0, 0},
-    {1, 1, 214, 153, BRIGHTNESS}
+    {0, 1, 0, 153, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM numpad_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 0, 0, 0},
-    {1, 1, 14, 255, BRIGHTNESS}
+    {0, 1, 14, 255, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 0, 0, 0},
-    {1, 1, 199, 217, BRIGHTNESS}
+    {0, 1, 183, 217, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM gaming_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 0, 0, 0},
-    {1, 1, 85, 255, BRIGHTNESS}
+    {0, 1, 85, 255, BRIGHTNESS}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
