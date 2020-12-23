@@ -31,7 +31,7 @@
 #define GAM_TOG TG(_GAMING)               // Toggles layer 5 on and off
 
 // Mod-Taps
-#define CMD_SPC LGUI_T(KC_SPC)            // ⌘ when held, Sapce when tapped
+#define CMD_SPC LGUI_T(KC_SPC)            // ⌘ when held, Space when tapped
 #define CMD_ENT RGUI_T(KC_ENT)            // ⌘ when held, Enter when tapped
 #define SHIFT_D LSFT_T(KC_D)              // ⇧ when held, D when tapped
 #define SHIFT_K RSFT_T(KC_K)              // ⇧ when held, K when tapped
@@ -42,8 +42,9 @@
 
 // Shortcuts
 #define MIC_TOG LSFT(LGUI(KC_A))          // ⇧⌘A: Mute or un-mute the mic in Zoom
-#define SCR_LCK LCTL(LGUI(KC_Q))             // ⌘^Q: Lock screen
-#define CAM_TOG LSFT(LGUI(KC_V))          // ⇧⌘V: Turn the camera off or on in Zoom
+#define SCR_LCK LCTL(LGUI(KC_Q))          // ⌘^Q: Lock screen
+#define CAM_TOG LCTL(LSFT(LGUI(KC_V)))    // ^⇧⌘V: Turn the camera off or on in Zoom
+#define ZOM_END LCTL(LSFT(LGUI(LALT(KC_GRV))))    // ^⇧⌘⌥`: Leave Zoom meeting
 #define CUT LGUI(KC_X)                    // ⌘X: Cut
 #define COPY LGUI(KC_C)                   // ⌘C: Copy
 #define PASTE LGUI(KC_V)                  // ⌘V: Paste
@@ -68,8 +69,8 @@
 #define ROW_END KC_END                    // End: Move to end of row
 #define SHT_TOP LGUI(KC_HOME)             // ⌘Home: Move to beginning of sheet
 #define SHT_BOT LGUI(KC_END)              // ⌘End: Move to end of sheet
-#define NXT_SHT LALT(KC_DOWN)             // ⌥↓: Move to next sheet 
-#define PRV_SHT LALT(KC_UP)               // ⌥↑: Move to previous sheet 
+#define NXT_SHT LALT(KC_DOWN)             // ⌥↓: Move to next sheet
+#define PRV_SHT LALT(KC_UP)               // ⌥↑: Move to previous sheet
 #define FILE_M LCTL(LALT(KC_F))           // ^⌥F: Open File menu
 #define BRD_TOP LALT(LSFT(KC_1))          // ⇧⌥1: Apply top border
 #define BRD_BOT LALT(LSFT(KC_3))          // ⇧⌥3: Apply bottom border
@@ -95,12 +96,12 @@
 #define LW_RGHT RSFT(RCTL(RGUI(KC_RGHT))) // ⇧^⌘→: Move current window to fill the lower-right quadrant
 
 // RGB
-#define BRIGHTNESS 40
+#define BRIGHTNESS 80
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Keymap 0: QWERTY layer (yellow underglow)    
- *                                          
+/* Keymap 0: QWERTY layer (yellow underglow)
+ *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |   1  |   2  |   3  |   4  |   5  |                                                                   |   6  |   7  |   8  |   9  |   0  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
@@ -111,20 +112,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |   Z  |   X  |   C  |   V  |   B  |                                                                   |   N  |   M  |   ,  |   .  |   /  |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
  *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
- *                                   |      |  Spc |      | |Mic Toggle| |ScrnLck| |Cam Toggle| |      |  Ent |      |
+ *                                   |      |  Spc |      | |Mic Toggle| |ScrnLck| | Zoom End | |      |  Ent |      |
  *                                   |  Esc |  (⌘) |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
  *                                   `------'------'------'                                     `------'------'------'
  */
 [_QWERTY] = LAYOUT(
-  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                                                   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   
-  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                                                   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   
-  CTL_A,   ALT_S,   SHIFT_D, ARW_F,   NUM_G,                                                                  RECT_H,  NAV_J,   SHIFT_K, ALT_L,   CTL_QT, 
+  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                                                   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                                                   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+  CTL_A,   ALT_S,   SHIFT_D, ARW_F,   NUM_G,                                                                  RECT_H,  NAV_J,   SHIFT_K, ALT_L,   CTL_QT,
   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                                                   KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-                                      KC_ESC,  CMD_SPC, KC_DEL,  MIC_TOG, SCR_LCK, CAM_TOG, KC_BSPC, CMD_ENT, KC_TAB                                      
+                                      KC_ESC,  CMD_SPC, KC_DEL,  MIC_TOG, SCR_LCK, ZOM_END, KC_BSPC, CMD_ENT, KC_TAB
 ),
 
-/* Keymap 1: Arrows layer (blue underglow) - Cursor movement, media keys, numpad, and clipboard shortcuts   
+/* Keymap 1: Arrows layer (blue underglow) - Cursor movement, media keys, numpad, and clipboard shortcuts
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |      |      |                                                                   | Mute | Vol- | Vol+ |   \  |      |
@@ -136,21 +137,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |      |      |      |      |      |                                                                   | Undo |  Cut | Copy | Paste|      |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
  *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
- *                                   |      |  Spc |      | |Mic Toggle| | Reset | |Cam Toggle| |      |  Ent |      |
+ *                                   |      |  Spc |      | |Mic Toggle| | Reset | | Zoom End | |      |  Ent |      |
  *                                   |  Esc |  (⌘) |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
  *                                   `------'------'------'                                     `------'------'------'
  */
 [_ARROWS] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_MUTE, KC_VOLD, KC_VOLU, KC_BSLS, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_RBRC, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX, 
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_RBRC, PRV_WD,  KC_UP,   NXT_WD,  XXXXXXX,
   KC_LCTL, KC_LALT, KC_LSFT, _______, XXXXXXX,                                                                KC_EQL,  KC_LEFT, KC_DOWN, KC_RGHT, KC_SCLN,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                UNDO,    CUT,     COPY,    PASTE,   XXXXXXX,
-                                      _______, _______, _______, _______, RESET,   _______, _______, _______, _______                                     
+                                      _______, _______, _______, _______, RESET,   _______, _______, _______, _______
 ),
 
-/* Keymap 2: Nav layer (red underglow) - Navigation shortcuts and media keys   
- *     
+/* Keymap 2: Nav layer (red underglow) - Navigation shortcuts and media keys
+ *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      | Bri- | Bri+ | Prev | Play | Next |                                                                   |      |      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
@@ -161,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |      |      |  ⌘[  |  ⌘]  |      |                                                                   |      |      |      |      |      |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
  *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
- *                                   |      |  Spc |      | |Mic Toggle| | Reset | |Cam Toggle| |      |  Ent |      |
+ *                                   |      |  Spc |      | |Cam Toggle| | Reset | | Zoom End | |      |  Ent |      |
  *                                   |  Esc |  (⌘) |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
  *                                   `------'------'------'                                     `------'------'------'
@@ -171,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GRV,  KC_HOME, KC_WH_D, KC_END,  KC_LBRC,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_WH_R, KC_WH_U, KC_WH_L, KC_MINS,                                                                XXXXXXX, _______, KC_RSFT, KC_RALT, KC_RCTL,
   XXXXXXX, XXXXXXX, GUI_BL,  GUI_BR,  XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                      _______, _______, _______, _______, RESET,   _______, _______, _______, _______                                     
+                                      _______, _______, _______, CAM_TOG, RESET,   _______, _______, _______, _______
 ),
 
 /* Keymap 3: Numpad
@@ -179,28 +180,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |      |      |                                                                   |      |   7  |   8  |   9  |      |
+ *      |      |      |      |      |      |                                                                   |   *  |   7  |   8  |   9  |   /  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |   ^  |   ⌥  |   ⇧  |      |(held)|                                                                   |      |   4  |   5  |   6  |   0  |
+ *      |   ^  |   ⌥  |   ⇧  |      |(held)|                                                                   |   =  |   4  |   5  |   6  |   0  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |      |      |                                                                   |      |   1  |   2  |   3  |   .  |
+ *      |      |      |      |      |      |                                                                   |   -  |   1  |   2  |   3  |   .  |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
  *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
- *                                   |      |  Spc |      | |Mic Toggle| | Reset | |Cam Toggle| |      |  Ent |      |
+ *                                   |      |  Spc |      | |Mic Toggle| | Reset | | Zoom End | |      |  Ent |      |
  *                                   |  Esc |  (⌘) |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
  *                                   `------'------'------'                                     `------'------'------'
  */
 [_NUMPAD] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, KC_7,    KC_8,    KC_9,    XXXXXXX,
-  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, _______,                                                                XXXXXXX, KC_4,    KC_5,    KC_6,    KC_0,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PDOT,
-                                      _______, _______, _______, _______, RESET,   _______, _______, _______, _______                                     
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_PAST, KC_7,    KC_8,    KC_9,    KC_PSLS,
+  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, _______,                                                                KC_EQL,  KC_4,    KC_5,    KC_6,    KC_0,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_PMNS, KC_1,    KC_2,    KC_3,    KC_PDOT,
+                                      _______, _______, _______, _______, RESET,   _______, _______, _______, _______
 ),
 
 /* Keymap 4: Rectangle layer (lavender underglow) - Window management shortcuts for Rectangle
- *     
+ *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
@@ -211,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |      | LwLf | LwHf | LwRt |      |                                                                   |      |      |      |      |      |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
  *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
- *                                   |      |  Spc |      | |Mic Toggle| | TG(5) | |Cam Toggle| |      |  Ent |      |
+ *                                   |      |  Spc |      | |Mic Toggle| | TG(5) | | Zoom End | |      |  Ent |      |
  *                                   |  Esc |  (⌘) |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
  *                                   `------'------'------'                                     `------'------'------'
@@ -221,11 +222,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   PRV_DIS, LF_HALF, FULLSCR, RT_HALF, NXT_DIS,                                                                _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                      _______, _______, _______, _______, GAM_TOG, _______, _______, _______, _______                                     
+                                      _______, _______, _______, _______, GAM_TOG, _______, _______, _______, _______
 ),
 
 /* Keymap 5: Gaming layer (green underglow)
- *                                          
+ *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |   1  |   2  |   3  |   4  |   5  |                                                                   |   6  |   7  |   8  |   9  |   0  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
@@ -236,7 +237,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |   Z  |   X  |   C  |   V  |   B  |                                                                   |   N  |   M  |   ,  |   .  |   /  |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
  *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
- *                                   |      |  Spc |      | |Mic Toggle| | TG(5) | |Cam Toggle| |      |  Ent |      |
+ *                                   |      |  Spc |      | |Mic Toggle| | TG(5) | | Zoom End | |      |  Ent |      |
  *                                   |  Esc |      |  Del | `----------' `-------' `----------' |  BS  |  (⌘) |  Tab |
  *                                   |      |      |      |                                     |      |      |      |
  *                                   `------'------'------'                                     `------'------'------'
@@ -246,7 +247,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______,                                                                _______, _______, _______, _______, _______,
   KC_A,    KC_S,    KC_D,    KC_F,    _______,                                                                _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______,                                                                _______, _______, _______, _______, _______,
-                                      _______, KC_SPC,  _______, _______, GAM_TOG, _______, _______, _______, _______                                     
+                                      _______, KC_SPC,  _______, _______, GAM_TOG, _______, _______, _______, _______
 )
 
 };
@@ -259,7 +260,7 @@ const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, 140, 255, BRIGHTNESS}
 );
 const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 0, 153, BRIGHTNESS}
+    {0, 1, 220, 255, BRIGHTNESS} // 0, 153
 );
 const rgblight_segment_t PROGMEM numpad_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, 14, 255, BRIGHTNESS}
