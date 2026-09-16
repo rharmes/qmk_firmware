@@ -31,7 +31,7 @@
 #define RECT_H LT(_RECT, KC_H)            // Momentarily activate layer 4 when held, and H when tapped
 #define RECT_M LT(_RECT, KC_M)            // Momentarily activate layer 4 when held, and M when tapped
 #define GAM_TOG TG(_GAMING)               // Toggles layer 5 on and off
-#define 34_TOG TG(_34_QWERTY)             // Toggles the 34-key layout
+#define TOG_34 TG(_34_QWERTY)             // Toggles the 34-key layout
 
 // Mod-Taps
 #define CMD_SPC LGUI_T(KC_SPC)            // ⌘ when held, Space when tapped
@@ -228,7 +228,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_PAST, KC_7,    KC_8,    KC_9,    KC_PSLS,
   KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                KC_EQL,  KC_4,    KC_5,    KC_6,    KC_0,
   XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,                                                                KC_PMNS, KC_1,    KC_2,    KC_3,    KC_PDOT,
-                                      _______, _______, _______, _______, 34_TOG,  _______, _______, _______, _______
+                                      _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 ),
 
 /* Keymap 4: Rectangle layer (lavender underglow) - Window management shortcuts for Rectangle
@@ -370,7 +370,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_PAST, KC_7,    KC_8,    KC_9,    KC_PSLS,
   KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                KC_EQL,  KC_4,    KC_5,    KC_6,    KC_0,
   XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,                                                                KC_PMNS, KC_1,    KC_2,    KC_3,    KC_PDOT,
-                                      _______, _______, KC_PPLS, _______, 34_TOG,  _______, _______, _______, _______
+                                      _______, _______, KC_PPLS, _______, TOG_34,  _______, _______, _______, _______
 ),
 
 /* Keymap 10: Rectangle layer (lavender underglow) - Window management shortcuts for Rectangle
@@ -393,7 +393,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   PRV_DIS, LF_HALF, FULLSCR, RT_HALF, NXT_DIS,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, XXXXXXX,                                                                XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX,
-                                      _______, _______, _______, _______, 34_TOG,  _______, _______, _______, _______
+                                      _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 ),
 
 /* Keymap 11: Right symbol layer (XXXXX underglow)
@@ -416,7 +416,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                SFT_6,   SFT_7,   SFT_8,   SFT_9,   SFT_0,
   KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, _______,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                      _______, _______, _______, _______, 34_TOG,  _______, _______, _______, _______
+                                      _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 ),
 
 /* Keymap 12: Left symbol layer (XXXXX underglow)
@@ -439,7 +439,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   SFT_1,   SFT_2,   SFT_3,   SFT_4,   SFT_5,                                                                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                _______, XXXXXXX, KC_RSFT, KC_RALT, KC_RCTL,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                      _______, _______, _______, _______, 34_TOG,  _______, _______, _______, _______
+                                      _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 )
 
 };
@@ -477,7 +477,7 @@ const rgblight_segment_t PROGMEM numpad_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, 85, 255, BRIGHTNESS} // Green
 );
 const rgblight_segment_t PROGMEM rect_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {{0, 1, 14, 255, BRIGHTNESS} // Orange
+    {0, 1, 14, 255, BRIGHTNESS} // Orange
 );
 const rgblight_segment_t PROGMEM sym_right_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, 33, 255, BRIGHTNESS} // Yellow
