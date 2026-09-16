@@ -115,8 +115,8 @@
 #define N34_J LT(_34_NAV, KC_J)           // Momentarily activate layer 8 when held, and J when tapped
 #define M34_V LT(_34_NUMPAD, KC_V)        // Momentarily activate layer 9 when held, and V when tapped
 #define R34_M LT(_34_RECT, KC_M)          // Momentarily activate layer 10 when held, and M when tapped
-#define SR_G LT(_34_SYM_R, KC_G)          // Momentarily activate layer 11 when held, and G when tapped
-#define SL_H LT(_34_SYM_L, KC_H)          // Momentarily activate layer 12 when held, and H when tapped
+#define SR_R LT(_34_SYM_R, KC_R)          // Momentarily activate layer 11 when held, and R when tapped
+#define SL_U LT(_34_SYM_L, KC_U)          // Momentarily activate layer 12 when held, and U when tapped
 
 #define SFT_1 LSFT(KC_1)                  // !
 #define SFT_2 LSFT(KC_2)                  // @
@@ -281,12 +281,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       _______, KC_SPC,  _______, _______, GAM_TOG, _______, _______, _______, _______
 ),
 
-/* Keymap 6: QWERTY layer, 34 keys active (pink underglow)
+/* Keymap 6: QWERTY layer, 34 keys active (white underglow)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |   Q  |   W  |   E  |   R  |   T  |                                                                   |   Y  |   U  |   I  |   O  |   P  |
+ *      |   Q  |   W  |   E  | R(5) |   T  |                                                                   |   Y  | U(6) |   I  |   O  |   P  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      | A(^) | S(⌥) | D(⇧) | F(1) | G(5) |                                                                   | H(6) | J(2) | K(⇧) | L(⌥) | '(^) |
+ *      | A(^) | S(⌥) | D(⇧) | F(1) |   G  |                                                                   |   H  | J(2) | K(⇧) | L(⌥) | '(^) |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      |   Z  |   X  |   C  | V(3) |   B  |                                                                   |   N  | M(4) |   ,  |   .  |   /  |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
@@ -298,13 +298,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_34_QWERTY] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                                                   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-  CTL_A,   ALT_S,   SHIFT_D, A34_F,   SR_G,                                                                   SL_H,    N34_J,   SHIFT_K, ALT_L,   CTL_QT,
+  KC_Q,    KC_W,    KC_E,    SR_R,    KC_T,                                                                   KC_Y,    SL_U,    KC_I,    KC_O,    KC_P,
+  CTL_A,   ALT_S,   SHIFT_D, A34_F,   KC_G,                                                                   KC_H,    N34_J,   SHIFT_K, ALT_L,   CTL_QT,
   KC_Z,    KC_X,    KC_C,    M34_V,   KC_B,                                                                   KC_N,    R34_M,   KC_COMM, KC_DOT,  KC_SLSH,
                                       XXXXXXX, CMD_SPC, KC_DEL,  MIC_TOG, SCR_LCK, ZOM_END, KC_BSPC, CMD_ENT, XXXXXXX
 ),
 
-/* Keymap 7: Arrows layer (blue underglow) - Cursor movement, media keys, numpad, and clipboard shortcuts
+/* Keymap 7: Arrows layer (cyan underglow) - Cursor movement, media keys, numpad, and clipboard shortcuts
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |      |      |                                                                   |   ]  | PvWd |  Up  | NxWd |   \  |
@@ -327,7 +327,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       _______, _______, _______, _______, RESET,   _______, _______, _______, _______
 ),
 
-/* Keymap 8: Nav layer (red underglow) - Navigation shortcuts and media keys
+/* Keymap 8: Nav layer (magenta underglow) - Navigation shortcuts and media keys
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |   `  | Home | WhDn | End  |   [  |                                                                   |      |      |      |      |      |
@@ -350,7 +350,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       _______, KC_TAB,  KC_ESC,  CAM_TOG, RESET,   _______, _______, _______, _______
 ),
 
-/* Keymap 9: Numpad (orange underglow)
+/* Keymap 9: Numpad (green underglow)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |      |      |                                                                   |   *  |   7  |   8  |   9  |   /  |
@@ -373,7 +373,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 ),
 
-/* Keymap 10: Rectangle layer (lavender underglow) - Window management shortcuts for Rectangle
+/* Keymap 10: Rectangle layer (orange underglow) - Window management shortcuts for Rectangle
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      | UpLf | UpHf | UpRt |      |                                                                   |      |      |      |      |      |
@@ -396,12 +396,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 ),
 
-/* Keymap 11: Right symbol layer (XXXXX underglow)
+/* Keymap 11: Right symbol layer (yellow underglow)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |      |      |      |      |      |                                                                   |   ^  |   &  |   *  |   (  |   )  |
+ *      |      |      |      |(held)|      |                                                                   |   ^  |   &  |   *  |   (  |   )  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |   ^  |   ⌥  |   ⇧  |      |(held)|                                                                   |      |      |      |      |      |
+ *      |   ^  |   ⌥  |   ⇧  |      |      |                                                                   |      |      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
@@ -413,18 +413,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_34_SYM_R] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                SFT_6,   SFT_7,   SFT_8,   SFT_9,   SFT_0,
-  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, _______,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,                                                                SFT_6,   SFT_7,   SFT_8,   SFT_9,   SFT_0,
+  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                       _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 ),
 
-/* Keymap 12: Left symbol layer (XXXXX underglow)
+/* Keymap 12: Left symbol layer (lavender underglow)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |   !  |   @  |   #  |   $  |   %  |                                                                   |      |      |      |      |      |
+ *      |   !  |   @  |   #  |   $  |   %  |                                                                   |      |(held)|      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |      |      |                                                                   |(held)|      |   ⇧  |   ⌥  |   ^  |
+ *      |      |      |      |      |      |                                                                   |      |      |   ⇧  |   ⌥  |   ^  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
@@ -436,8 +436,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_34_SYM_L] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  SFT_1,   SFT_2,   SFT_3,   SFT_4,   SFT_5,                                                                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                _______, XXXXXXX, KC_RSFT, KC_RALT, KC_RCTL,
+  SFT_1,   SFT_2,   SFT_3,   SFT_4,   SFT_5,                                                                  XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, KC_RSFT, KC_RALT, KC_RCTL,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                       _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 )
