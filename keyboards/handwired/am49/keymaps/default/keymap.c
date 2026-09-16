@@ -60,6 +60,7 @@
 #define KILL_LN RCTL(KC_K)                // ^K: Kill line
 #define GUI_BL RGUI(KC_LBRC)              // ⌘[: Previous Channel in Slack
 #define GUI_BR RGUI(KC_RBRC)              // ⌘]: Next Channel in Slack
+#define EMOJI LCTL(LGUI(KC_SPC))          // ^⌘Space: Open the emoji menu
 
 // GSheets shortcuts (https://support.google.com/docs/answer/181110). Not currently used, but I plan to add a layer for these.
 #define PST_VAL LSFT(LGUI(KC_V))          // ⇧⌘V: Paste values only
@@ -401,7 +402,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |(held)|      |                                                                   |   ^  |   &  |   *  |   (  |   )  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |   ^  |   ⌥  |   ⇧  |      |      |                                                                   |      |      |      |      |      |
+ *      |   ^  |   ⌥  |   ⇧  |      |      |                                                                   | Emoji|      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
@@ -414,7 +415,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_34_SYM_R] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,                                                                SFT_6,   SFT_7,   SFT_8,   SFT_9,   SFT_0,
-  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                EMOJI,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                       _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 ),
@@ -424,7 +425,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |   !  |   @  |   #  |   $  |   %  |                                                                   |      |(held)|      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |      |      |                                                                   |      |      |   ⇧  |   ⌥  |   ^  |
+ *      |      |      |      |      | Emoji|                                                                   |      |      |   ⇧  |   ⌥  |   ^  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
@@ -437,7 +438,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_34_SYM_L] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   SFT_1,   SFT_2,   SFT_3,   SFT_4,   SFT_5,                                                                  XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, KC_RSFT, KC_RALT, KC_RCTL,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EMOJI,                                                                  XXXXXXX, XXXXXXX, KC_RSFT, KC_RALT, KC_RCTL,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                       _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 )
