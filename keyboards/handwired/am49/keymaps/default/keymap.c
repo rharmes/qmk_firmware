@@ -528,6 +528,24 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
+// Turn the underglow off when locking the screen, and back on at the next key press
+static bool rgb_asleep = false;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (keycode == SCR_LCK) {
+        // Wait for the release so the lock shortcut isn't delayed by the LED update
+        if (!record->event.pressed) {
+            rgb_asleep = true;
+            rgblight_disable_noeeprom();
+        }
+    } else if (rgb_asleep && record->event.pressed) {
+        // Layer lights keep tracking the layer state while off, so this restores the right color
+        rgb_asleep = false;
+        rgblight_enable_noeeprom();
+    }
+    return true;
+}
+
 // Combos
 enum combos {
   ESC_TAB_CAPSLOCK
