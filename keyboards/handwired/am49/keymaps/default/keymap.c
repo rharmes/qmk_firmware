@@ -105,19 +105,15 @@
 // Practice layers for a 34-key layout
 #define _34_QWERTY 6
 #define _34_ARROWS 7
-#define _34_NAV 8
+#define _34_SYM 8
 #define _34_NUMPAD 9
 #define _34_RECT 10
-#define _34_SYM_R 11
-#define _34_SYM_L 12
 
 // Layers
 #define A34_F LT(_34_ARROWS, KC_F)        // Momentarily activate layer 7 when held, and F when tapped
-#define N34_J LT(_34_NAV, KC_J)           // Momentarily activate layer 8 when held, and J when tapped
+#define S34_J LT(_34_SYM, KC_J)           // Momentarily activate layer 8 when held, and J when tapped
 #define M34_V LT(_34_NUMPAD, KC_V)        // Momentarily activate layer 9 when held, and V when tapped
 #define R34_M LT(_34_RECT, KC_M)          // Momentarily activate layer 10 when held, and M when tapped
-#define SR_R LT(_34_SYM_R, KC_R)          // Momentarily activate layer 11 when held, and R when tapped
-#define SL_U LT(_34_SYM_L, KC_U)          // Momentarily activate layer 12 when held, and U when tapped
 
 #define SFT_1 LSFT(KC_1)                  // !
 #define SFT_2 LSFT(KC_2)                  // @
@@ -129,6 +125,7 @@
 #define SFT_8 LSFT(KC_8)                  // *
 #define SFT_9 LSFT(KC_9)                  // (
 #define SFT_0 LSFT(KC_0)                  // )
+#define OPT_8 LALT(KC_8)                  // •
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -285,7 +282,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 6: QWERTY layer, 34 keys active (white underglow)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |   Q  |   W  |   E  | R(5) |   T  |                                                                   |   Y  | U(6) |   I  |   O  |   P  |
+ *      |   Q  |   W  |   E  |   R  |   T  |                                                                   |   Y  |   U  |   I  |   O  |   P  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      | A(^) | S(⌥) | D(⇧) | F(1) |   G  |                                                                   |   H  | J(2) | K(⇧) | L(⌥) | '(^) |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
@@ -299,8 +296,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_34_QWERTY] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_Q,    KC_W,    KC_E,    SR_R,    KC_T,                                                                   KC_Y,    SL_U,    KC_I,    KC_O,    KC_P,
-  CTL_A,   ALT_S,   SHIFT_D, A34_F,   KC_G,                                                                   KC_H,    N34_J,   SHIFT_K, ALT_L,   CTL_QT,
+  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                                                   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
+  CTL_A,   ALT_S,   SHIFT_D, A34_F,   KC_G,                                                                   KC_H,    S34_J,   SHIFT_K, ALT_L,   CTL_QT,
   KC_Z,    KC_X,    KC_C,    M34_V,   KC_B,                                                                   KC_N,    R34_M,   KC_COMM, KC_DOT,  KC_SLSH,
                                       XXXXXXX, CMD_SPC, KC_DEL,  MIC_TOG, SCR_LCK, ZOM_END, KC_BSPC, CMD_ENT, XXXXXXX
 ),
@@ -312,7 +309,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      |   ^  |   ⌥  |   ⇧  |(held)|      |                                                                   |   =  | Left | Down | Right|   ;  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |      |      |                                                                   |      |  Cut | Copy | Paste|      |
+ *      |      |      |      |      |      |                                                                   | Emoji|  Cut | Copy | Paste|   •  |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
  *                                          ,------.------. ,----------. ,-------. ,----------. ,------.------.
  *                                          |      |      | |Mic Toggle| | Reset | | Zoom End | |      |      |
@@ -324,18 +321,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_RBRC, PRV_WD,  KC_UP,   NXT_WD,  KC_BSLS,
   KC_LCTL, KC_LALT, KC_LSFT, _______, XXXXXXX,                                                                KC_EQL,  KC_LEFT, KC_DOWN, KC_RGHT, KC_SCLN,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, CUT,     COPY,    PASTE,   XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                EMOJI,   CUT,     COPY,    PASTE,   OPT_8,
                                       _______, _______, _______, _______, RESET,   _______, _______, _______, _______
 ),
 
-/* Keymap 8: Nav layer (magenta underglow) - Navigation shortcuts and media keys
+/* Keymap 8: Symbol layer (magenta underglow)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |   `  | Home | WhDn | End  |   [  |                                                                   |      |      |      |      |      |
+ *      |   `  |   %  |   *  |   &  |   [  |                                                                   |      |      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      | Vol+ | WhRt | WhUp | WhLf |   -  |                                                                   |      |(held)|   ⇧  |   ⌥  |   ^  |
+ *      |   !  |   $  |   (  |   )  |   -  |                                                                   |      |(held)|   ⇧  |   ⌥  |   ^  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      | Vol- |      |  ⌘[  |  ⌘]  |      |                                                                   |      |      |      |      |      |
+ *      |   ^  |   @  |  ⌘[  |  ⌘]  |   #  |                                                                   |      |      |      |      |      |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
  *                                          ,------.------. ,----------. ,-------. ,----------. ,------.------.
  *                                          |      |      | |Cam Toggle| | Reset | | Zoom End | |      |      |
@@ -343,11 +340,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                          |      |      |                                     |      |  (⌘) |
  *                                          `------'------'                                     `------'------'
  */
-[_34_NAV] = LAYOUT(
+[_34_SYM] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_GRV,  KC_HOME, KC_WH_D, KC_END,  KC_LBRC,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_VOLU, KC_WH_R, KC_WH_U, KC_WH_L, KC_MINS,                                                                XXXXXXX, _______, KC_RSFT, KC_RALT, KC_RCTL,
-  KC_VOLD, XXXXXXX, GUI_BL,  GUI_BR,  XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_GRV,  SFT_5,   SFT_8,   SFT_7,   KC_LBRC,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  SFT_1,   SFT_4,   SFT_9,   SFT_0,   KC_MINS,                                                                XXXXXXX, _______, KC_RSFT, KC_RALT, KC_RCTL,
+  SFT_6,   SFT_2,   GUI_BL,  GUI_BR,  SFT_3,                                                                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                       _______, KC_TAB,  KC_ESC,  CAM_TOG, RESET,   _______, _______, _______, _______
 ),
 
@@ -377,11 +374,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 10: Rectangle layer (orange underglow) - Window management shortcuts for Rectangle
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |      | UpLf | UpHf | UpRt |      |                                                                   |      |      |      |      |      |
+ *      |      | UpLf | UpHf | UpRt | WhDn |                                                                   |      |      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
  *      | Disp-| LfHf | Full | RtHf | Disp+|                                                                   |      |      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      | LwLf | LwHf | LwRt |      |                                                                   |      |(held)|      |      |      |
+ *      |      | LwLf | LwHf | LwRt | WhUp |                                                                   |      |(held)|      |      |      |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
  *                                          ,------.------. ,----------. ,-------. ,----------. ,------.------.
  *                                          |      |      | |Mic Toggle| | TG(7) | | Zoom End | |      |      |
@@ -391,55 +388,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_34_RECT] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, UP_LEFT, UP_HALF, UP_RGHT, KC_WH_D,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   PRV_DIS, LF_HALF, FULLSCR, RT_HALF, NXT_DIS,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, XXXXXXX,                                                                XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX,
-                                      _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
-),
-
-/* Keymap 11: Right symbol layer (yellow underglow)
- *
- *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |      |      |      |(held)|      |                                                                   |   ^  |   &  |   *  |   (  |   )  |
- *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |   ^  |   ⌥  |   ⇧  |      |      |                                                                   | Emoji|      |      |      |      |
- *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
- *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
- *                                          ,------.------. ,----------. ,-------. ,----------. ,------.------.
- *                                          |      |      | |Mic Toggle| | TG(7) | | Zoom End | |      |      |
- *                                          |  Spc |  Del | `----------' `-------' `----------' |  BS  |  Ent |
- *                                          |  (⌘) |      |                                     |      |  (⌘) |
- *                                          `------'------'                                     `------'------'
- */
-[_34_SYM_R] = LAYOUT(
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,                                                                SFT_6,   SFT_7,   SFT_8,   SFT_9,   SFT_0,
-  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                EMOJI,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                      _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
-),
-
-/* Keymap 12: Left symbol layer (lavender underglow)
- *
- *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |   !  |   @  |   #  |   $  |   %  |                                                                   |      |(held)|      |      |      |
- *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |      | Emoji|                                                                   |      |      |   ⇧  |   ⌥  |   ^  |
- *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
- *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
- *                                          ,------.------. ,----------. ,-------. ,----------. ,------.------.
- *                                          |      |      | |Mic Toggle| | TG(7) | | Zoom End | |      |      |
- *                                          |  Spc |  Del | `----------' `-------' `----------' |  BS  |  Ent |
- *                                          |  (⌘) |      |                                     |      |  (⌘) |
- *                                          `------'------'                                     `------'------'
- */
-[_34_SYM_L] = LAYOUT(
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  SFT_1,   SFT_2,   SFT_3,   SFT_4,   SFT_5,                                                                  XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EMOJI,                                                                  XXXXXXX, XXXXXXX, KC_RSFT, KC_RALT, KC_RCTL,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, LW_LEFT, LW_HALF, LW_RGHT, KC_WH_U,                                                                XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX,
                                       _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 )
 
@@ -471,7 +422,7 @@ const rgblight_segment_t PROGMEM qwerty_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 const rgblight_segment_t PROGMEM arrow_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, 140, 255, BRIGHTNESS} // Cyan
 );
-const rgblight_segment_t PROGMEM nav_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+const rgblight_segment_t PROGMEM sym_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, 220, 255, BRIGHTNESS} // Magenta
 );
 const rgblight_segment_t PROGMEM numpad_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -479,12 +430,6 @@ const rgblight_segment_t PROGMEM numpad_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 const rgblight_segment_t PROGMEM rect_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, 14, 255, BRIGHTNESS} // Orange
-);
-const rgblight_segment_t PROGMEM sym_right_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 33, 255, BRIGHTNESS} // Yellow
-);
-const rgblight_segment_t PROGMEM sym_left_34_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 183, 217, BRIGHTNESS} // Lavender
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
@@ -497,11 +442,9 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
 
     qwerty_34_layer,
     arrow_34_layer,
-    nav_34_layer,
+    sym_34_layer,
     numpad_34_layer,
-    rect_34_layer,
-    sym_right_34_layer,
-    sym_left_34_layer
+    rect_34_layer
 );
 
 void keyboard_post_init_user(void) {
@@ -521,11 +464,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     rgblight_set_layer_state(_34_QWERTY, layer_state_cmp(state, _34_QWERTY));
     rgblight_set_layer_state(_34_ARROWS, layer_state_cmp(state, _34_ARROWS));
-    rgblight_set_layer_state(_34_NAV, layer_state_cmp(state, _34_NAV));
+    rgblight_set_layer_state(_34_SYM, layer_state_cmp(state, _34_SYM));
     rgblight_set_layer_state(_34_NUMPAD, layer_state_cmp(state, _34_NUMPAD));
     rgblight_set_layer_state(_34_RECT, layer_state_cmp(state, _34_RECT));
-    rgblight_set_layer_state(_34_SYM_R, layer_state_cmp(state, _34_SYM_R));
-    rgblight_set_layer_state(_34_SYM_L, layer_state_cmp(state, _34_SYM_L));
     return state;
 }
 
