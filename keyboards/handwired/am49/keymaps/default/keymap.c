@@ -490,11 +490,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Combos
 enum combos {
-  ESC_TAB_CAPSLOCK
+  DEL_BSPC_CAPSLOCK
 };
 
-const uint16_t PROGMEM esc_tab_combo[] = {KC_ESC, KC_TAB, COMBO_END};
+const uint16_t PROGMEM del_bspc_combo[] = {KC_DEL, KC_BSPC, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [ESC_TAB_CAPSLOCK] = COMBO(esc_tab_combo, KC_CAPSLOCK)
+  [DEL_BSPC_CAPSLOCK] = COMBO(del_bspc_combo, KC_CAPSLOCK)
 };
