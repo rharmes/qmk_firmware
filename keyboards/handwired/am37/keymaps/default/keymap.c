@@ -111,7 +111,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Keymap 0: QWERTY layer (yellow underglow)
+/* Keymap 0: QWERTY layer (yellow underglow, both hands)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |   Q  |   W  |   E  |   R  |   T  |                                                                   |   Y  |   U  |   I  |   O  |   P  |
@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                CMD_SPC, KC_DEL, MIC_TOG, SCR_LCK, ZOM_END, KC_BSPC, CMD_ENT
 ),
 
-/* Keymap 1: Arrows layer (cyan underglow) - Cursor movement, clipboard shortcuts, and symbols
+/* Keymap 1: Arrows layer (cyan underglow, right hand) - Cursor movement, clipboard shortcuts, and symbols
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |      |      |                                                                   |   ]  | PvWd |  Up  | NxWd |   \  |
@@ -155,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                _______, _______, _______, RESET,   _______, _______, _______
 ),
 
-/* Keymap 2: Symbol layer (magenta underglow)
+/* Keymap 2: Symbol layer (magenta underglow, left hand)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |   `  |   %  |   *  |   &  |   [  |                                                                   |      |      |      |      |      |
@@ -177,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_TAB,  KC_ESC,  CAM_TOG, RESET,   _______, _______, _______
 ),
 
-/* Keymap 3: Numpad (green underglow)
+/* Keymap 3: Numpad (green underglow, right hand)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |      |      |                                                                   |   *  |   7  |   8  |   9  |   /  |
@@ -199,7 +199,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                _______, _______, _______, _______, _______, _______, _______
 ),
 
-/* Keymap 4: Rectangle layer (orange underglow) - Window management shortcuts for Rectangle
+/* Keymap 4: Rectangle layer (orange underglow, left hand) - Window management shortcuts for Rectangle
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      | UpLf | UpHf | UpRt | WhDn |                                                                   |      |      |      |      |      |
@@ -223,21 +223,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// Lighting layer
+// Lighting layers
+//
+// Two LEDs, daisy-chained: index 0 sits under the left hand, index 1 under the
+// right. Each layer lights the hand its keys are on -- which is the hand that
+// isn't holding the layer -- and blacks the other one out. Black rather than no
+// segment at all: an LED no segment covers keeps whatever the QWERTY layer
+// painted underneath, since layers are written in ascending order.
+#define LEFT_LED 0, 1
+#define RIGHT_LED 1, 1
+#define HSV_UNLIT 0, 0, 0
+
 const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 33, 255, BRIGHTNESS} // Yellow
+    {0, 2, 33, 255, BRIGHTNESS} // Yellow on both hands
 );
 const rgblight_segment_t PROGMEM arrow_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 140, 255, BRIGHTNESS} // Cyan
+    {LEFT_LED, HSV_UNLIT},
+    {RIGHT_LED, 140, 255, BRIGHTNESS} // Cyan: arrows are on the right hand
 );
 const rgblight_segment_t PROGMEM sym_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 220, 255, BRIGHTNESS} // Magenta
+    {LEFT_LED, 220, 255, BRIGHTNESS}, // Magenta: symbols are on the left hand
+    {RIGHT_LED, HSV_UNLIT}
 );
 const rgblight_segment_t PROGMEM numpad_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 85, 255, BRIGHTNESS} // Green
+    {LEFT_LED, HSV_UNLIT},
+    {RIGHT_LED, 85, 255, BRIGHTNESS} // Green: the numpad is on the right hand
 );
 const rgblight_segment_t PROGMEM rect_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 14, 255, BRIGHTNESS} // Orange
+    {LEFT_LED, 14, 255, BRIGHTNESS}, // Orange: window controls are on the left hand
+    {RIGHT_LED, HSV_UNLIT}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(

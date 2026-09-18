@@ -58,6 +58,6 @@
 /* RBG indicator lights */
 #define RGB_DI_PIN B0
 #define RGBLIGHT_ANIMATIONS
-#define RGBLED_NUM 1
+#define RGBLED_NUM 2            // 0 is the left hand, 1 is the right
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_MAX_LAYERS 16   // 5 layers defined in the default keymap; default is 8
