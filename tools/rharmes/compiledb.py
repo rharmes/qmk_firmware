@@ -21,7 +21,7 @@ If generating the database fails or is interrupted, the previous
 compile_commands.json is restored. A failure while rebuilding headers leaves
 the new database in place and names the board to rebuild.
 
-Usage: util/rharmes/compiledb.py   (works from any directory; takes ~3 minutes)
+Usage: tools/rharmes/compiledb.py   (works from any directory; takes ~3 minutes)
 """
 import copy
 import json
