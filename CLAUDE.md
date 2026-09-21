@@ -42,8 +42,9 @@ and never lists `keymap.c` (modern QMK compiles it by `#include`), and fixes eac
 Rerun it after touching `keyboard.json` or a `rules.mk`, since features become `-D` flags,
 and after any clean build: `make clean`, `qmk compile --clean` or a single-board
 `qmk compile --compiledb` all delete the generated headers the database points at, and
-clangd then reports dozens of phantom errors. Everything outside `keyboards/` is analysed
-with the flags of the first board in the script's `BOARDS` list, currently `am37`.
+clangd then reports dozens of phantom errors. Every shared source (everything except the
+five keymaps and each board's generated `default_keyboard.c`) is analysed with the flags
+of the first board in the script's `BOARDS` list, currently `am37`.
 `compile_commands.json` stays in `.git/info/exclude`; `.clangd` is upstream's, tracked.
 
 ## Legacy firmware

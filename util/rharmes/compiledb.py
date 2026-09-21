@@ -9,9 +9,9 @@ whichever file is nearest, which is the wrong board for all but one keymap.
 This script runs the generator per board, checks the database it wrote really
 is that board's (a parse failure inside `--compiledb` leaves the previous file
 in place and still exits 0), clones each board's keymap_introspection.c record
-for its keymap.c, merges the databases (first board wins for shared files,
-so quantum/, tmk_core/ and drivers/ are analysed with the first board's flags),
-then rebuilds every board but the last so the generated
+for its keymap.c, merges the databases (first board wins, so every shared
+source, meaning everything except the five keymaps and each board's generated
+default_keyboard.c, is analysed with BOARDS[0]'s flags), then rebuilds every board but the last so the generated
 `.build/obj_*/src/default_keyboard.h` headers the database points at exist.
 Each `--compiledb` run's own build is discarded by the next run's clean, so
 nine compiles happen where five would do; that is the price of driving the
@@ -70,9 +70,10 @@ def rebuild_headers() -> None:
     for board in BOARDS[:-1]:
         try:
             qmk_compile(board)
-        except (subprocess.CalledProcessError, KeyboardInterrupt) as err:
+        except (Exception, KeyboardInterrupt) as err:
+            remaining = ", ".join(BOARDS[BOARDS.index(board):-1])
             sys.exit(f"{DB.name} is complete, but .build is missing the {board} headers ({type(err).__name__}); "
-                     f"run `qmk compile -kb handwired/{board} -km default` for it and each board after it.")
+                     f"run `qmk compile -kb handwired/<board> -km default` for: {remaining}.")
 
 
 def main() -> None:
