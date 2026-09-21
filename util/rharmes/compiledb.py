@@ -17,7 +17,9 @@ Each `--compiledb` run's own build is discarded by the next run's clean, so
 nine compiles happen where five would do; that is the price of driving the
 stable `qmk` CLI instead of importing its internals.
 
-If any step fails, the previous compile_commands.json is restored.
+If generating the database fails or is interrupted, the previous
+compile_commands.json is restored. A failure while rebuilding headers leaves
+the new database in place and names the board to rebuild.
 
 Usage: util/rharmes/compiledb.py   (works from any directory; takes ~3 minutes)
 """
@@ -52,7 +54,7 @@ def board_records(board: str) -> list[dict]:
     return [keymap, *records]
 
 
-def build_database() -> None:
+def write_database() -> None:
     seen, merged = set(), []
     for board in BOARDS:
         for record in board_records(board):
@@ -62,24 +64,36 @@ def build_database() -> None:
     DB.write_text(json.dumps(merged, indent=4))
     print(f"wrote {DB} with {len(merged)} entries for {', '.join(BOARDS)}")
 
+
+def rebuild_headers() -> None:
     # --compiledb cleans .build, so only the last board's generated headers survive.
     for board in BOARDS[:-1]:
-        qmk_compile(board)
+        try:
+            qmk_compile(board)
+        except (subprocess.CalledProcessError, KeyboardInterrupt) as err:
+            sys.exit(f"{DB.name} is complete, but .build is missing the {board} headers ({type(err).__name__}); "
+                     f"run `qmk compile -kb handwired/{board} -km default` for it and each board after it.")
 
 
 def main() -> None:
     previous = DB.read_text() if DB.exists() else None
     try:
-        build_database()
-    except (subprocess.CalledProcessError, SystemExit) as err:
+        write_database()
+    except BaseException as err:
         if previous is not None:
             DB.write_text(previous)
             restored = f"the previous {DB.name} was restored"
         else:
             DB.unlink(missing_ok=True)
             restored = f"no {DB.name} was left behind"
-        detail = err if isinstance(err, SystemExit) else f"`{' '.join(err.cmd)}` exited {err.returncode}"
+        if isinstance(err, subprocess.CalledProcessError):
+            detail = f"`{' '.join(err.cmd)}` exited {err.returncode}"
+        elif isinstance(err, SystemExit):
+            detail = str(err)
+        else:
+            detail = f"{type(err).__name__}: {err}" if str(err) else type(err).__name__
         sys.exit(f"compiledb failed: {detail}; {restored}. Generated headers in .build are incomplete: rerun this script.")
+    rebuild_headers()
 
 
 if __name__ == "__main__":
