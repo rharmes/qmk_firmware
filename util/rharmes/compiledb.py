@@ -6,12 +6,20 @@ first, and never lists keymap.c (modern QMK compiles it by #include from
 quantum/keymap_introspection.c). clangd then guesses flags for keymap.c from
 whichever file is nearest, which is the wrong board for all but one keymap.
 
-This script runs the generator per board, clones each board's
-keymap_introspection.c record for its keymap.c, merges the databases (first
-board wins for shared files), then rebuilds every board so the generated
+This script runs the generator per board, checks the database it wrote really
+is that board's (a parse failure inside `--compiledb` leaves the previous file
+in place and still exits 0), clones each board's keymap_introspection.c record
+for its keymap.c, merges the databases (first board wins for shared files,
+so quantum/, tmk_core/ and drivers/ are analysed with the first board's flags),
+then rebuilds every board but the last so the generated
 `.build/obj_*/src/default_keyboard.h` headers the database points at exist.
+Each `--compiledb` run's own build is discarded by the next run's clean, so
+nine compiles happen where five would do; that is the price of driving the
+stable `qmk` CLI instead of importing its internals.
 
-Usage, from the repo root:   util/rharmes/compiledb.py [board ...]
+If any step fails, the previous compile_commands.json is restored.
+
+Usage: util/rharmes/compiledb.py   (works from any directory; takes ~3 minutes)
 """
 import copy
 import json
@@ -22,34 +30,57 @@ from pathlib import Path
 BOARDS = ["am37", "am49", "am96", "zf65", "vc3"]
 ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / "compile_commands.json"
+INTROSPECTION = "quantum/keymap_introspection.c"
 
 
 def qmk_compile(board: str, *extra: str) -> None:
     subprocess.run(["qmk", "compile", "-kb", f"handwired/{board}", "-km", "default", *extra], cwd=ROOT, check=True)
 
 
-def main(boards: list[str]) -> None:
-    per_board = {}
-    for board in boards:
-        qmk_compile(board, "--compiledb")
-        per_board[board] = json.loads(DB.read_text())
+def board_records(board: str) -> list[dict]:
+    """Generate the database for one board and return its records, verified."""
+    DB.unlink(missing_ok=True)
+    qmk_compile(board, "--compiledb")
+    if not DB.exists():
+        sys.exit(f"{board}: qmk compile --compiledb wrote no {DB.name}")
+    records = json.loads(DB.read_text())
+    intro = next((r for r in records if r["file"] == INTROSPECTION), None)
+    if intro is None or f'-DQMK_KEYBOARD="handwired/{board}"' not in intro["arguments"]:
+        sys.exit(f"{board}: {DB.name} has no {INTROSPECTION} record for this board")
+    keymap = copy.deepcopy(intro)
+    keymap["file"] = f"keyboards/handwired/{board}/keymaps/default/keymap.c"
+    return [keymap, *records]
 
+
+def build_database() -> None:
     seen, merged = set(), []
-    for board, records in per_board.items():
-        intro = next(r for r in records if r["file"] == "quantum/keymap_introspection.c")
-        keymap = copy.deepcopy(intro)
-        keymap["file"] = f"keyboards/handwired/{board}/keymaps/default/keymap.c"
-        for record in [keymap, *records]:
+    for board in BOARDS:
+        for record in board_records(board):
             if record["file"] not in seen:
                 seen.add(record["file"])
                 merged.append(record)
     DB.write_text(json.dumps(merged, indent=4))
-    print(f"wrote {DB} with {len(merged)} entries for {', '.join(boards)}")
+    print(f"wrote {DB} with {len(merged)} entries for {', '.join(BOARDS)}")
 
     # --compiledb cleans .build, so only the last board's generated headers survive.
-    for board in boards[:-1]:
+    for board in BOARDS[:-1]:
         qmk_compile(board)
 
 
+def main() -> None:
+    previous = DB.read_text() if DB.exists() else None
+    try:
+        build_database()
+    except (subprocess.CalledProcessError, SystemExit) as err:
+        if previous is not None:
+            DB.write_text(previous)
+            restored = f"the previous {DB.name} was restored"
+        else:
+            DB.unlink(missing_ok=True)
+            restored = f"no {DB.name} was left behind"
+        detail = err if isinstance(err, SystemExit) else f"`{' '.join(err.cmd)}` exited {err.returncode}"
+        sys.exit(f"compiledb failed: {detail}; {restored}. Generated headers in .build are incomplete: rerun this script.")
+
+
 if __name__ == "__main__":
-    main(sys.argv[1:] or BOARDS)
+    main()

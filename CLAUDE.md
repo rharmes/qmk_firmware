@@ -11,8 +11,10 @@ build workflow.
 - **`master` is upstream `master` plus our files** (the boards, `util/rharmes/`, this
   file), merged in by PR. Pull upstream in on GitHub with
   `gh repo sync rharmes/qmk_firmware --source qmk/qmk_firmware --branch master` (needs the
-  `workflow` token scope; it makes a merge commit now that `master` has our commits), then
-  `git fetch origin` and fast-forward. Never commit to it directly.
+  `workflow` token scope). Now that `master` has our commits it should produce a merge
+  commit; this has not been exercised yet. **Never pass `--force`**: it hard-resets
+  `master` to upstream and drops our files. Afterwards `git fetch origin`, fast-forward,
+  and build all five boards to catch upstream breakage. Never commit to `master` directly.
 - **Work on a branch off `master`** and land it with a PR. The boards, `util/rharmes/`
   and this file are the only files any branch should touch.
 - **`dev` is frozen.** It is the QMK 0.9.46-era tree the boards ran on until September
@@ -37,7 +39,11 @@ clangd: run `util/rharmes/compiledb.py` (about three minutes) to build
 `compile_commands.json` for all five boards, then restart the session so clangd drops its
 guessed flags. It wraps `qmk compile --compiledb`, which handles one board, cleans `.build`
 and never lists `keymap.c` (modern QMK compiles it by `#include`), and fixes each of those.
-Rerun it after touching `keyboard.json` or a `rules.mk`, since features become `-D` flags.
+Rerun it after touching `keyboard.json` or a `rules.mk`, since features become `-D` flags,
+and after any clean build: `make clean`, `qmk compile --clean` or a single-board
+`qmk compile --compiledb` all delete the generated headers the database points at, and
+clangd then reports dozens of phantom errors. Shared sources under `quantum/`, `tmk_core/`
+and `drivers/` are analysed with `am37`'s flags only.
 `compile_commands.json` stays in `.git/info/exclude`; `.clangd` is upstream's, tracked.
 
 ## Legacy firmware
