@@ -209,11 +209,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
  *      |      |      |      |      |      |                                                                   |      |      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |      |      |                                                                   |   *  |   7  |   8  |   9  |   /  |
+ *      |      |      |      |      |      |                                                                   |   -  |   7  |   8  |   9  |   %  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |   ^  |   ⌥  |   ⇧  |      |      |                                                                   |   +  |   4  |   5  |   6  |   0  |
+ *      |   ^  |   ⌥  |   ⇧  |      |      |                                                                   |   $  |   4  |   5  |   6  |   0  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |(held)|      |                                                                   |   -  |   1  |   2  |   3  |   .  |
+ *      |      |      |      |(held)|      |                                                                   |   ,  |   1  |   2  |   3  |   .  |
  *      `------'------'------'------'------',------.                                                   ,------.`------'------'------'------'------'
  *                                   ,------|      |------. ,----------. ,-------. ,----------. ,------|      |------.
  *                                   |      |  Spc |      | |Mic Toggle| | TG(7) | | Zoom End | |      |  Ent |      |
@@ -223,9 +223,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_NUMPAD] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_PAST, KC_7,    KC_8,    KC_9,    KC_PSLS,
-  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                KC_PPLS, KC_4,    KC_5,    KC_6,    KC_0,
-  XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,                                                                KC_PMNS, KC_1,    KC_2,    KC_3,    KC_PDOT,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_PMNS, KC_7,    KC_8,    KC_9,    SFT_5,
+  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                SFT_4,   KC_4,    KC_5,    KC_6,    KC_0,
+  XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,                                                                KC_COMM, KC_1,    KC_2,    KC_3,    KC_PDOT,
                                       _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 ),
 
@@ -328,11 +328,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 8: Symbol layer (magenta underglow)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |   `  |   %  |   *  |   &  |   [  |                                                                   |      |      |      |      |      |
+ *      |   `  |   @  |   #  |   *  |   [  |                                                                   |      |      |      |      |      |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |   !  |   $  |   (  |   )  |   -  |                                                                   |      |(held)|   ⇧  |   ⌥  |   ^  |
+ *      |   ^  |   !  |   (  |   )  |   -  |                                                                   |      |(held)|   ⇧  |   ⌥  |   ^  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |   ^  |   @  |  ⌘[  |  ⌘]  |   #  |                                                                   |      |      |      |      |      |
+ *      |      |      |  ⌘[  |  ⌘]  |   &  |                                                                   |      |      |      |      |      |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
  *                                          ,------.------. ,----------. ,-------. ,----------. ,------.------.
  *                                          |      |      | |Cam Toggle| | Reset | | Zoom End | |      |      |
@@ -342,20 +342,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_34_SYM] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_GRV,  SFT_5,   SFT_8,   SFT_7,   KC_LBRC,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  SFT_1,   SFT_4,   SFT_9,   SFT_0,   KC_MINS,                                                                XXXXXXX, _______, KC_RSFT, KC_RALT, KC_RCTL,
-  SFT_6,   SFT_2,   GUI_BL,  GUI_BR,  SFT_3,                                                                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_GRV,  SFT_2,   SFT_3,   SFT_8,   KC_LBRC,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  SFT_6,   SFT_1,   SFT_9,   SFT_0,   KC_MINS,                                                                XXXXXXX, _______, KC_RSFT, KC_RALT, KC_RCTL,
+  XXXXXXX, XXXXXXX, GUI_BL,  GUI_BR,  SFT_7,                                                                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                       _______, KC_TAB,  KC_ESC,  CAM_TOG, QK_BOOT, _______, _______, _______, _______
 ),
 
 /* Keymap 9: Numpad (green underglow)
  *
  *      ,------.------.------.------.------.                                                                   ,------.------.------.------.------.
- *      |      |      |      |      |      |                                                                   |   *  |   7  |   8  |   9  |   /  |
+ *      |      |      |      |      |      |                                                                   |   -  |   7  |   8  |   9  |   %  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |   ^  |   ⌥  |   ⇧  |      |      |                                                                   |   +  |   4  |   5  |   6  |   0  |
+ *      |   ^  |   ⌥  |   ⇧  |      |      |                                                                   |   $  |   4  |   5  |   6  |   0  |
  *      |------+------+------+------+------|                                                                   |------+------+------+------+------|
- *      |      |      |      |(held)|      |                                                                   |   -  |   1  |   2  |   3  |   .  |
+ *      |      |      |      |(held)|      |                                                                   |   ,  |   1  |   2  |   3  |   .  |
  *      `------'------'------'------'------'                                                                   `------'------'------'------'------'
  *                                          ,------.------. ,----------. ,-------. ,----------. ,------.------.
  *                                          |      |      | |Mic Toggle| | TG(7) | | Zoom End | |      |      |
@@ -365,9 +365,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_34_NUMPAD] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_PAST, KC_7,    KC_8,    KC_9,    KC_PSLS,
-  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                KC_PPLS, KC_4,    KC_5,    KC_6,    KC_0,
-  XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,                                                                KC_PMNS, KC_1,    KC_2,    KC_3,    KC_PDOT,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                KC_PMNS, KC_7,    KC_8,    KC_9,    SFT_5,
+  KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,                                                                SFT_4,   KC_4,    KC_5,    KC_6,    KC_0,
+  XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,                                                                KC_COMM, KC_1,    KC_2,    KC_3,    KC_PDOT,
                                       _______, _______, _______, _______, TOG_34,  _______, _______, _______, _______
 ),
 
